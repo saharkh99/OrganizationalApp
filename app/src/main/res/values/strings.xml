@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">OrganizationalApp</string>
+    <string name="fooladname">فولاد مبارکه اصفهان</string>
+    <string name="string_enter">ورود به سامانه</string>
+    <string name="string_pass_forget">رمز عبور خود را فرموش کرده اید؟</string>
+    <string name="string_complete_username">نام کاربری خود راوارد کنید</string>
+    <string name="string_complete_pass">رمز عبور خود را وارد کنید</string>
+
 </resources>

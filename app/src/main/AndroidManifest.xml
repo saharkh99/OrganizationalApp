@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ServicePart.ServiceActivity"></activity>
-        <activity android:name=".HomeActivity" />
+        <activity android:name=".HomeActivity" android:label="@string/app_name"/>
         <activity android:name=".NewsPart.NewsActivity" />
         <activity android:name=".NewsPart.SecondPage" />
         <activity android:name=".MainActivity">

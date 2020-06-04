@@ -5,5 +5,12 @@
     <string name="string_pass_forget">رمز عبور خود را فرموش کرده اید؟</string>
     <string name="string_complete_username">نام کاربری خود راوارد کنید</string>
     <string name="string_complete_pass">رمز عبور خود را وارد کنید</string>
+    <string name="string_title">عنوان خبر یا اطلاعیه</string>
+    <string name="string_tag">خبر</string>
+    <string name="string_date">1399/02/29</string>
+    <string name="string_description">"اساس پیدایش جمهوری اسلامی ایران بر پایه نظریه ولایت فقیه است. حسینعلی منتظری در کتابی به تشریح (روشن سازی) این نظریه پرداخت. بر پایه این نظریه در زمان غیبت امام دوازدهم، فقیه واجد شرایط به عنوان ولی فقیه انتخاب می\u200Cشود که وظایف امام غایب در زمان غیبت را به عهده دارد. نظریه ولایت مطلقه فقیه در سال\u200Cهای اخیر توسط آیت الله خمینی مطرح شده و نظریات مشابهی نیز در آثار فقیهان پیشین نیز هست</string>
+    <string name="string_read_more">ادامه مطالب</string>
+    <string name="string_service">خدمات</string>
+    <string name="string_news">اخبار و اطلاعیه ها</string>
 
 </resources>

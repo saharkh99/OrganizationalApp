@@ -1,4 +1,4 @@
-package com.example.organizationalapp;
+package com.example.organizationalapp.ForntPart;
 
 import android.app.Application;
 

@@ -6,4 +6,6 @@
     <color name="unActive">#b0b7c2</color>
     <color name="textColor">#42526E</color>
     <color name="error_color">#EEC23D3D</color>
+    <color name="color_title">#EE161515</color>
+    <color name="color_des">#EE3C3838</color>
 </resources>

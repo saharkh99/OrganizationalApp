@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/news_part"
+        android:icon="@drawable/newswhite"
+        android:title="خبر" />
+
+    <item
+        android:id="@+id/home_part"
+        android:icon="@drawable/homewhite"
+        android:title="خانه" />
+
+    <item
+        android:id="@+id/service_part"
+        android:icon="@drawable/khadamatwhite"
+        android:title="خدمات" />
+
+</menu>

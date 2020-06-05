@@ -58,7 +58,7 @@ public  void setOnItemClickListener(onItemClickListener listener){
         return news.size();
     }
 
-    public   class NewsViewHolder extends RecyclerView.ViewHolder{
+    public static class NewsViewHolder extends RecyclerView.ViewHolder{
 
         private ImageView img;
         private TextView title;

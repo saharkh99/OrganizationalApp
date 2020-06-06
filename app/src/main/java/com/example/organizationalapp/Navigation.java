@@ -14,9 +14,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
 public class Navigation {
-    public  static void setNavigation(NavigationView navigationView, final Context context){
-
-
+    public static void setNavigation(NavigationView navigationView, final Context context) {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -29,12 +27,17 @@ public class Navigation {
                         item.setTitle("");
                         changingServiceIntent(context);
                         break;
+                    case R.id.home_part:
+                        item.setTitle("");
+                        changingHomeIntent(context);
+                        break;
                 }
                 return false;
             }
         });
     }
-    public  static void setButtomNavigation(BottomNavigationView navigation, final Context context){
+
+    public static void setButtomNavigation(BottomNavigationView navigation, final Context context) {
         navigation.setSelectedItemId(R.id.home_part);
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -48,11 +51,16 @@ public class Navigation {
                         item.setTitle("");
                         changingServiceIntent(context);
                         break;
+                    case R.id.home_part:
+                        item.setTitle("");
+                        changingHomeIntent(context);
+                        break;
                 }
                 return false;
             }
         });
     }
+
     public static void changingNewsIntent(Context context) {
         Intent intent = new Intent(context, SecondPage.class);
 
@@ -60,6 +68,11 @@ public class Navigation {
     }
 
     public static void changingServiceIntent(Context context) {
+        Intent intent = new Intent(context, ServiceActivity.class);
+        context.startActivity(intent);
+    }
+
+    public static void changingHomeIntent(Context context) {
         Intent intent = new Intent(context, ServiceActivity.class);
         context.startActivity(intent);
     }

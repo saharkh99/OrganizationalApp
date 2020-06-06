@@ -48,7 +48,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:text="grk.rjjjjjjjjjjjjjjjj"
+                android:text="user"
                 android:textColor="@color/textColor"
                 android:textSize="20dp"
                 android:textStyle="bold"
@@ -64,16 +64,19 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_gravity="center"
                 android:layout_weight="2"
+                android:layout_gravity="center"
                 android:orientation="horizontal">
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/news_btn"
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100dp"
+                    android:layout_margin="10dp"
+                    style="@style/stroke"
+                    android:textStyle="bold"
+                    android:drawableTop="@drawable/newswhitech"
+
                     android:background="@drawable/buttons"
                     android:text="@string/string_news"
                     android:textColor="@color/colorPrimaryDark"
@@ -81,12 +84,14 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/service_btn"
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
+                    android:layout_width="120dp"
+                    android:layout_height="100dp"
+                    android:layout_margin="10dp"
+                    android:textStyle="bold"
+                    android:drawableTop="@drawable/khadamatwhitech"
                     android:background="@drawable/buttons"
                     android:text="@string/string_service"
+                    style="@style/stroke"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="14dp" />
 
@@ -95,10 +100,7 @@
 
         </LinearLayout>
         <FrameLayout android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <!-- **** Place Your Content Here **** -->
-
+               android:layout_height="wrap_content">
             <View android:layout_width="match_parent"
                 android:layout_height="5dp"
                 android:background="@drawable/shadow"/>
@@ -109,12 +111,12 @@
             android:id="@+id/navigation"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_weight="0.75"
+            android:layout_weight="0.5"
             android:layout_gravity="bottom"
             android:elevation="5dp"
+            app:labelVisibilityMode="unlabeled"
             app:itemIconTint="@drawable/selector"
-            app:itemTextAppearanceActive="@drawable/newsgreen"
-            app:itemTextAppearanceInactive="@drawable/newswhite"
+            app:itemIconSize="30dp"
             app:menu="@menu/navigation" />
 
 
@@ -123,11 +125,10 @@
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigation_view"
         android:layout_width="250dp"
+        app:itemIconTint="@drawable/selector2"
         app:headerLayout="@layout/navigation_header"
-        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-
         app:menu="@menu/start_navigation">
     </com.google.android.material.navigation.NavigationView>
 

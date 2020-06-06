@@ -1,19 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item
-        android:id="@+id/news_part"
-        android:icon="@drawable/newswhite"
-        android:title="خبر" />
 
     <item
         android:id="@+id/home_part"
-        android:icon="@drawable/homewhite"
+        android:icon="@drawable/homgreen"
         android:title="خانه" />
 
     <item
         android:id="@+id/service_part"
-        android:icon="@drawable/khadamatwhite"
+        android:icon="@drawable/khadamatgreen"
         android:title="خدمات" />
+
+    <item
+        android:id="@+id/news_part"
+        android:icon="@drawable/newsgreen"
+        android:title="اخبار و اطلاعیه ها" />
+
+    <item
+        android:id="@+id/setting"
+        android:icon="@drawable/setting"
+        android:title="تنظیمات" />
+    <item
+        android:id="@+id/about"
+        android:icon="@drawable/about"
+        android:title="درباره ما" />
+
+    <item
+        android:id="@+id/logout"
+        android:icon="@drawable/logout"
+        android:title="خروج" />
+
 
 </menu>

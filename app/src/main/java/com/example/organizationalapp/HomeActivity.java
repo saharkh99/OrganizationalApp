@@ -1,22 +1,15 @@
 package com.example.organizationalapp;
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
-
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
 import com.example.organizationalapp.ForntPart.BaseContext;
-import com.example.organizationalapp.NewsPart.SecondPage;
-import com.example.organizationalapp.ServicePart.ServiceActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.navigation.NavigationView;
@@ -34,19 +27,17 @@ public class HomeActivity extends BaseContext {
         setContentView(R.layout.activity_home);
         findView();
         setNavigation();
-
-        welcome.setText(getIntent().getStringExtra("name")+"   عزیز"+ "\n"+"به برنامه جامع خوش آمدید");
-        Log.d("name", getIntent().getStringExtra("name"));
+        welcome.setText(getIntent().getStringExtra("name") + "   عزیز" + "\n" + "به برنامه جامع خوش آمدید");
         news.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                changingNewsIntent();
+                Navigation.changingNewsIntent(HomeActivity.this);
             }
         });
         service.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                changingServiceIntent();
+                Navigation.changingServiceIntent(HomeActivity.this);
             }
         });
 
@@ -64,25 +55,16 @@ public class HomeActivity extends BaseContext {
         news = findViewById(R.id.news_btn);
         service = findViewById(R.id.service_btn);
         navigation = findViewById(R.id.navigation);
-        navigationView=findViewById(R.id.navigation_view);
+        navigationView = findViewById(R.id.navigation_view);
         welcome = findViewById(R.id.welcome);
     }
 
-    public void changingNewsIntent() {
-        Intent intent = new Intent(HomeActivity.this, SecondPage.class);
-
-        startActivity(intent);
-    }
-
-    public void changingServiceIntent() {
-        Intent intent = new Intent(HomeActivity.this, ServiceActivity.class);
-        startActivity(intent);
-    }
     @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
     }
+
     public void setToolBar() {
         Toolbar toolbars = findViewById(R.id.toolbar);
         setSupportActionBar(toolbars);
@@ -101,9 +83,10 @@ public class HomeActivity extends BaseContext {
         getSupportActionBar().setIcon(R.drawable.logofitwhite);
 
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case android.R.id.home:
                 onBackPressed();
                 return true;

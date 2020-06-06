@@ -29,7 +29,8 @@ public class HomeActivity extends BaseContext {
         nv=new Navigation();
         findView();
         setNavigation();
-        welcome.setText(getIntent().getStringExtra("name") + "   عزیز" + "\n" + "به برنامه جامع خوش آمدید");
+        welcome.setText(User.getName() + "   عزیز" + "\n" + "به برنامه جامع خوش آمدید");
+       // welcome.setText(getIntent().getStringExtra("name") + "   عزیز" + "\n" + "به برنامه جامع خوش آمدید");
         news.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

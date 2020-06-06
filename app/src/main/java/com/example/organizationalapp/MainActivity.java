@@ -19,6 +19,7 @@ public class MainActivity extends BaseContext {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         findView();
+
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -28,6 +29,7 @@ public class MainActivity extends BaseContext {
 
                 if (checkNotEmpty(uname, upass)) {
                     Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                    User.name=uname;
                     intent.putExtra("name", uname);
                     startActivity(intent);
                 }

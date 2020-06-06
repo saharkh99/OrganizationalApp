@@ -1,27 +1,31 @@
 package com.example.organizationalapp;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 
-public class Preview extends AppCompatActivity {
+import com.example.organizationalapp.ForntPart.BaseContext;
 
+public class Preview extends BaseContext {
+
+    @RequiresApi(api = Build.VERSION_CODES.P)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Thread background = new Thread() {
+        setContentView(R.layout.activity_preview);
+        new Handler().postDelayed(new Runnable() {
+            @Override
             public void run() {
-                try {
-                    sleep(5*1000);
-                    Intent i=new Intent(getBaseContext(),MainActivity.class);
-                    startActivity(i);
-                    finish();
-                } catch (Exception e) {
-                }
+                Intent intent = new Intent(getBaseContext(), MainActivity.class);
+                startActivity(intent);
+                finish();
+
             }
-        };
-        background.start();
+        }, 3000);
     }
 }

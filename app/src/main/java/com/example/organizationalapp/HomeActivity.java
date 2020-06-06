@@ -19,25 +19,31 @@ public class HomeActivity extends BaseContext {
     MaterialButton news, service;
     BottomNavigationView navigation;
     NavigationView navigationView;
+    Navigation nv;
     TextView welcome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        nv=new Navigation();
         findView();
         setNavigation();
         welcome.setText(getIntent().getStringExtra("name") + "   عزیز" + "\n" + "به برنامه جامع خوش آمدید");
         news.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Navigation.changingNewsIntent(HomeActivity.this);
+                nv.changingNewsIntent(HomeActivity.this);
+                navigation.setSelectedItemId(R.id.news_part);
+
             }
         });
         service.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Navigation.changingServiceIntent(HomeActivity.this);
+                nv.changingServiceIntent(HomeActivity.this);
+                navigation.setSelectedItemId(R.id.service_part);
+
             }
         });
 
@@ -45,9 +51,9 @@ public class HomeActivity extends BaseContext {
     }
 
     private void setNavigation() {
-        Navigation.setNavigation(navigationView, this);
+        nv.setNavigation(navigationView, this);
         navigation.setSelectedItemId(R.id.home_part);
-        Navigation.setButtomNavigation(navigation, this);
+        nv.setButtomNavigation(navigation, this);
 
     }
 

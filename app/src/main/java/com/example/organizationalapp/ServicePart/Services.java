@@ -3,6 +3,15 @@ package com.example.organizationalapp.ServicePart;
 public class Services {
     String name;
     int img;
+    int color;
+
+    public int getColor() {
+        return color;
+    }
+
+    public void setColor(int color) {
+        this.color = color;
+    }
 
     public String getName() {
         return name;

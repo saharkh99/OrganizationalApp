@@ -33,6 +33,7 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ServiceV
         Services service = services.get(position);
         holder.serviceName.setText(service.getName());
         holder.img.setImageResource(service.getImg());
+        holder.img.setColorFilter(service.getColor());
 
     }
 

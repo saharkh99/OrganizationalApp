@@ -24,11 +24,10 @@ public class MainActivity extends BaseContext {
             public void onClick(View view) {
                 login.setEnabled(true);
                 String uname = username.getText().toString().trim();
-                //String uname = username.getText().toString().trim();
                 String upass = password.getText().toString().trim();
 
                 if (checkNotEmpty(uname, upass)) {
-                    Intent intent=new Intent(MainActivity.this,HomeActivity.class);
+                    Intent intent = new Intent(MainActivity.this, HomeActivity.class);
                     intent.putExtra("name", uname);
                     startActivity(intent);
                 }
@@ -41,10 +40,10 @@ public class MainActivity extends BaseContext {
         username = findViewById(R.id.et_username);
         password = findViewById(R.id.et_password);
     }
+
     private boolean checkNotEmpty(String uname, String upass) {
         if (uname.isEmpty() || upass.isEmpty()) {
             login.setEnabled(false);
-            // showAlertDialogButtonClicked();
             if (uname.isEmpty())
                 username.setError("نام کاربری خود را وارد کنید");
             if (upass.isEmpty())

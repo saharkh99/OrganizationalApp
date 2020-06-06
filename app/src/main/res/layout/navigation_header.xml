@@ -43,6 +43,7 @@
                 android:text="sahar"
                 android:textSize="18dp"
                 android:textStyle="bold"
+                android:id="@+id/name"
                 android:textColor="@color/textColor" />
 
             <TextView

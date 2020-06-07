@@ -3,7 +3,10 @@ package com.example.organizationalapp;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.organizationalapp.ForntPart.BaseContext;
 import com.google.android.material.button.MaterialButton;
@@ -13,7 +16,7 @@ public class MainActivity extends BaseContext {
     TextInputEditText username;
     TextInputEditText password;
     MaterialButton login;
-
+    FragmentTransaction transaction;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +33,8 @@ public class MainActivity extends BaseContext {
                 if (checkNotEmpty(uname, upass)) {
                     Intent intent = new Intent(MainActivity.this, HomeActivity.class);
                     User.name=uname;
-                    intent.putExtra("name", uname);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("name", uname);
                     startActivity(intent);
                 }
             }

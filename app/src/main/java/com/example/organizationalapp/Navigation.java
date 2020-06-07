@@ -7,8 +7,10 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 
 import com.example.organizationalapp.HomeActivity;
+import com.example.organizationalapp.NewsPart.NewsFragmentList;
 import com.example.organizationalapp.NewsPart.SecondPage;
 import com.example.organizationalapp.R;
 import com.example.organizationalapp.ServicePart.ServiceActivity;

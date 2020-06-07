@@ -51,7 +51,6 @@ public class NewsFragmentList extends Fragment  {
     public static NewsFragmentList newInstance() {
 
         Bundle args = new Bundle();
-
         NewsFragmentList fragment = new NewsFragmentList();
         fragment.setArguments(args);
         return fragment;

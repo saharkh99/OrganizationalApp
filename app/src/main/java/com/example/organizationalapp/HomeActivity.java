@@ -89,6 +89,7 @@ public class HomeActivity extends BaseContext {
         toolbars.setNavigationIcon(R.drawable.menu);
         getSupportActionBar().setIcon(R.drawable.logofitwhite);
 
+
     }
 
     @Override

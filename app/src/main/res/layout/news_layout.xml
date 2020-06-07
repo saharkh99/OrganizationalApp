@@ -5,9 +5,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card-view="http://schemas.android.com/apk/res-auto"
     android:id="@+id/news_cardview"
-    card-view:cardBackgroundColor="@color/colorPrimaryDark"
-    card-view:cardCornerRadius="5dp"
+    card-view:cardCornerRadius="10dp"
+    android:layout_margin="15dp"
+    android:layout_alignParentRight="true"
     card-view:cardElevation="5dp"
+    android:layoutDirection="rtl"
+
     android:layout_height="wrap_content">
 <LinearLayout
     xmlns="http://schemas.android.com/tools"
@@ -15,12 +18,18 @@
     android:layout_width="match_parent"
     android:layout_margin="5dp"
     android:layout_height="wrap_content">
-
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="2.5"
+        android:id="@+id/img_news"
+        android:src="@drawable/scrum"/>
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="2"
+        android:layout_weight="1"
         android:orientation="vertical">
         <TextView
             android:layout_width="wrap_content"
@@ -36,14 +45,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/color_des"
-                android:textSize="14dp"
-                android:layout_margin="5dp"
-                android:text="@string/string_date"
-                android:id="@+id/tv_date_news"/>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -55,6 +57,14 @@
                 android:background="@drawable/textview_border"
                 android:text="@string/string_tag"
                 android:id="@+id/tv_tag_news"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_des"
+                android:textSize="14dp"
+                android:layout_margin="5dp"
+                android:text="@string/string_date"
+                android:id="@+id/tv_date_news"/>
 
         </LinearLayout>
         <TextView
@@ -73,28 +83,23 @@
             android:orientation="horizontal"
             android:layout_margin="5dp"
             android:layout_gravity="left">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/arrow"/>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimary"
                 android:clickable="true"
                 android:text="@string/string_read_more"/>
-
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/arrow"/>
 
         </LinearLayout>
 
     </LinearLayout>
 
-    <ImageView
-        android:layout_width="0dp"
-        android:layout_height="150dp"
-        android:layout_weight="1"
-        android:id="@+id/img_news"
-        android:src="@drawable/scrum"/>
+
 
 </LinearLayout>
     </com.google.android.material.card.MaterialCardView>

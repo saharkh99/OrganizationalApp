@@ -71,13 +71,12 @@ public class SecondPage extends BaseContext {
         actionBar.setHomeButtonEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbars, 0, 0);
         drawerLayout.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
-        toolbars.setLogo(R.drawable.homewhite);
         toolbars.setNavigationIcon(R.drawable.menu);
-        getSupportActionBar().setIcon(R.drawable.logofitwhite);
 
     }
 

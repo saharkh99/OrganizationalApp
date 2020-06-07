@@ -85,9 +85,8 @@ public class HomeActivity extends BaseContext {
         ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbars, 0, 0);
         drawerLayout.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
-        toolbars.setLogo(R.drawable.homewhite);
         toolbars.setNavigationIcon(R.drawable.menu);
-        getSupportActionBar().setIcon(R.drawable.logofitwhite);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
 
     }

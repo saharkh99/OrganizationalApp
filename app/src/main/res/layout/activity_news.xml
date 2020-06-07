@@ -20,11 +20,46 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:title="@string/full"
-            app:titleTextAppearance="@style/Toolbar.TitleText"
             app:contentInsetStartWithNavigation="0dp"
             android:background="@color/colorPrimary"
+            app:title=""
             android:elevation="20dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:paddingRight="10dp"
+                    android:layout_gravity="right"
+                    android:id="@+id/logo"
+                    android:paddingLeft="10dp"
+                    android:background="@drawable/logowhitech"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="برنامه جامع"
+                android:layout_marginRight="5dp"
+                android:layout_toLeftOf="@id/logo"
+                android:textSize="16dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:padding="15dp"
+                />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:id="@+id/back"
+                    android:padding="5dp"
+                    android:layout_margin="10dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@drawable/arrow_"
+
+                    android:clickable="true" />
+            </RelativeLayout>
         </androidx.appcompat.widget.Toolbar>
         <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -66,12 +101,14 @@
         android:layout_gravity="right"
         android:layout_margin="5dp"
         android:id="@+id/title_news"
+        android:paddingRight="5dp"
         style="@style/stroke"
         android:textColor="@color/textColor"
         android:textStyle="bold"/>
     <LinearLayout
         android:layout_gravity="right"
         android:layout_width="wrap_content"
+        android:paddingRight="5dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 

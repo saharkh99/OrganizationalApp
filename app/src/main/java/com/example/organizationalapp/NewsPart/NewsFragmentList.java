@@ -18,12 +18,13 @@ import com.example.organizationalapp.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NewsFragmentList extends Fragment  {
+public class NewsFragmentList extends Fragment {
     private View view;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
-         view=inflater.inflate(R.layout.news_part_layout, container,false);
+        view = inflater.inflate(R.layout.news_part_layout, container, false);
         RecyclerView recyclerView = view.findViewById(R.id.recycle);
         NewsAdapter newsAdapter = new NewsAdapter(getActivity(), DataReceive.getNews(getActivity()));
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false));
@@ -32,9 +33,9 @@ public class NewsFragmentList extends Fragment  {
         newsAdapter.setOnItemClickListener(new NewsAdapter.onItemClickListener() {
             @Override
             public void onItemClick(int postion) {
-                List<News>list=new ArrayList<>();
-                list=DataReceive.getNews(getActivity());
-                Toast.makeText(getActivity(), list.get(postion).getTitle(), Toast.LENGTH_SHORT).show();
+                List<News> list = new ArrayList<>();
+                list = DataReceive.getNews(getActivity());
+                //Toast.makeText(getActivity(), list.get(postion).getTitle(), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getActivity(), NewsActivity.class);
                 intent.putExtra("title", list.get(postion).getTitle());
                 intent.putExtra("date", list.get(postion).getDate());

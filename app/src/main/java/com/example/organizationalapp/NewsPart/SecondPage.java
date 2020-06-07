@@ -16,35 +16,37 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 
+import com.example.organizationalapp.ForntPart.BaseContext;
 import com.example.organizationalapp.Navigation;
 import com.example.organizationalapp.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
-public class SecondPage extends AppCompatActivity {
+public class SecondPage extends BaseContext {
     Navigation nv;
     BottomNavigationView navigation;
     NavigationView navigationView;
     private Fragment fragment;
     private FragmentManager fragmentManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second_page);
-        nv=new Navigation();
+        nv = new Navigation();
         findView();
         setToolBar();
         setNavigation();
-      //  setTopNavigation();
-        ViewPager viewPager=findViewById(R.id.viewpager);
-        ViewPagerNewsAdapt viewPagerNewsAdapt=new ViewPagerNewsAdapt(getSupportFragmentManager());
+        //  setTopNavigation();
+        ViewPager viewPager = findViewById(R.id.viewpager);
+        ViewPagerNewsAdapt viewPagerNewsAdapt = new ViewPagerNewsAdapt(getSupportFragmentManager());
         viewPager.setAdapter(viewPagerNewsAdapt);
-        viewPagerNewsAdapt.addFragment(NewsFragmentList.newInstance( ), "همه");
-        viewPagerNewsAdapt.addFragment(NewsFragmentList.newInstance( ), "خبر");
-        viewPagerNewsAdapt.addFragment(NewsFragmentList.newInstance( ), "اطلاعیه");
-        Log.d("xx", String.valueOf(viewPager.getCurrentItem()));
+        viewPagerNewsAdapt.addFragment(NewsFragmentList.newInstance(), "همه");
+        viewPagerNewsAdapt.addFragment(NewsFragmentList.newInstance(), "خبر");
+        viewPagerNewsAdapt.addFragment(NewsFragmentList.newInstance(), "اطلاعیه");
 
     }
+
     private void setNavigation() {
         nv.setNavigation(navigationView, this);
         navigation.setSelectedItemId(R.id.news_part);
@@ -59,6 +61,7 @@ public class SecondPage extends AppCompatActivity {
 
 
     }
+
     public void setToolBar() {
         Toolbar toolbars = findViewById(R.id.toolbar);
         setSupportActionBar(toolbars);
@@ -77,36 +80,5 @@ public class SecondPage extends AppCompatActivity {
         getSupportActionBar().setIcon(R.drawable.logofitwhite);
 
     }
-//    public void setTopNavigation() {
-//        navigation2.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-//            @Override
-//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//                switch (item.getItemId()) {
-//                    case R.id.all:
-//                        navigation.setSelectedItemId(R.id.all);
-//                        fragment = NewsFragmentList.newInstance();
-//                        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-//                        ft.replace(R.id.viewpager, fragment).commit();
-//                        item.setTitle("");
-//                        break;
-//                    case R.id.news:
-//                        navigation.setSelectedItemId(R.id.news);
-//                        Fragment fragment1 = NewsFragmentList.newInstance();
-//                        FragmentTransaction ft1 = getSupportFragmentManager().beginTransaction();
-//                        ft1.replace(R.id.viewpager, fragment1).commit();
-//                        item.setTitle("");
-//                        break;
-//                    case R.id.announce:
-//                        navigation.setSelectedItemId(R.id.announce);
-//                        Fragment fragment2 = NewsFragmentList.newInstance();
-//                        FragmentTransaction ft2 = getSupportFragmentManager().beginTransaction();
-//                        ft2.replace(R.id.viewpager, fragment2).commit();
-//                        item.setTitle("");
-//                        break;
-//                }
-//                return false;
-//            }
-//        });
-//    }
 
 }

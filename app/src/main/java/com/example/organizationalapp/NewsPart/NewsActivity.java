@@ -1,20 +1,31 @@
 package com.example.organizationalapp.NewsPart;
 
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.organizationalapp.ForntPart.BaseContext;
+import com.example.organizationalapp.Navigation;
 import com.example.organizationalapp.R;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
 
-public class NewsActivity extends AppCompatActivity {
+public class NewsActivity extends BaseContext {
 
     TextView titleTV,dateTV,tagTV,desTV;
     ImageView imgTV;
     String title,date,tag,des;
     int img;
+    BottomNavigationView navigation;
+    NavigationView navigationView;
+    Navigation nv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +34,9 @@ public class NewsActivity extends AppCompatActivity {
         getData();
         findView();
         inint();
+        setToolBar();
+        nv=new Navigation();
+        setNavigation();
 
     }
 
@@ -40,6 +54,8 @@ public class NewsActivity extends AppCompatActivity {
         desTV=findViewById(R.id.description_news);
         dateTV=findViewById(R.id.date_news);
         imgTV=findViewById(R.id.img_news);
+        navigation = findViewById(R.id.navigation);
+        navigationView = findViewById(R.id.navigation_view);
     }
 
     private void getData() {
@@ -49,5 +65,30 @@ public class NewsActivity extends AppCompatActivity {
         tag=intent.getStringExtra("tag");
         des=intent.getStringExtra("des");
         img=intent.getIntExtra("img", 0);
+    }
+    private void setNavigation() {
+        nv.setNavigation(navigationView, this);
+        navigation.setSelectedItemId(R.id.news_part);
+        nv.setButtomNavigation(navigation, this);
+
+    }
+    public void setToolBar() {
+        Toolbar toolbars = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbars);
+        DrawerLayout drawerLayout = findViewById(R.id.drawer);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeButtonEnabled(true);
+        actionBar.setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbars, 0, 0);
+        drawerLayout.addDrawerListener(drawerToggle);
+        drawerToggle.syncState();
+        toolbars.setLogo(R.drawable.homewhite);
+        toolbars.setNavigationIcon(R.drawable.menu);
+        getSupportActionBar().setIcon(R.drawable.logofitwhite);
+
+
     }
 }

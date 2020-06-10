@@ -11,14 +11,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity" ></activity>
+        <activity android:name=".BaseActivity"></activity>
+        <activity android:name=".MainActivity" />
         <activity android:name=".ServicePart.ServiceActivity" />
-        <activity
-            android:name=".HomeActivity"
-            />
-        <activity android:name=".NewsPart.NewsActivity"/>
+        <activity android:name=".HomeActivity" />
+        <activity android:name=".NewsPart.NewsActivity" />
         <activity android:name=".NewsPart.SecondPage" />
-        <activity android:name=".Preview" android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" >
+        <activity
+            android:name=".Preview"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

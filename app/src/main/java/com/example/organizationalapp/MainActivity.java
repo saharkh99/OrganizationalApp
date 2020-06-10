@@ -31,10 +31,10 @@ public class MainActivity extends BaseContext {
                 String upass = password.getText().toString().trim();
 
                 if (checkNotEmpty(uname, upass)) {
-                    Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                    Intent intent = new Intent(MainActivity.this, BaseActivity.class);
                     User.name=uname;
-                    Bundle bundle = new Bundle();
-                    bundle.putString("name", uname);
+                   // Bundle bundle = new Bundle();
+                    //bundle.putString("name", uname);
                     startActivity(intent);
                 }
             }

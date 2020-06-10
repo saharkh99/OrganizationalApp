@@ -1,5 +1,6 @@
 package com.example.organizationalapp;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.MenuItem;
@@ -7,7 +8,10 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.organizationalapp.HomeActivity;
 import com.example.organizationalapp.NewsPart.NewsFragmentList;
@@ -18,6 +22,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
 public class Navigation {
+    FragmentManager fragmentManager;
     public void setNavigation(NavigationView navigationView, final Context context) {
         View v = navigationView.getHeaderView(0);
         TextView name = v.findViewById(R.id.name);
@@ -49,7 +54,7 @@ public class Navigation {
         });
     }
 
-    public void setButtomNavigation(BottomNavigationView navigation, final Context context) {
+    public void setButtomNavigation(BottomNavigationView navigation, final Activity context) {
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -79,6 +84,7 @@ public class Navigation {
     }
 
     public void changingServiceIntent(Context context) {
+
         Intent intent = new Intent(context, ServiceActivity.class);
         context.startActivity(intent);
     }

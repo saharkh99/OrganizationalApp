@@ -7,6 +7,7 @@
     tools:context=".ServicePart.ServiceActivity"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawer"
+    android:background="@color/colorPrimaryDark"
     android:layoutDirection="rtl">
     <LinearLayout
         android:layout_width="match_parent"
@@ -49,10 +50,11 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:text="اخبار وطالاعیه ها"
+            android:text="اخبار واطالاعیه ها"
             android:paddingRight="20dp"
             android:textColor="@color/textColor"
             android:paddingTop="10dp"
+            android:id="@+id/up_title"
             android:textStyle="bold"
             android:textSize="16dp"
             android:layout_weight="0.5"/>

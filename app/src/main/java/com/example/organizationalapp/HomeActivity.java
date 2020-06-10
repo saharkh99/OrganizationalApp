@@ -1,13 +1,10 @@
 package com.example.organizationalapp;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -37,7 +34,7 @@ public class HomeActivity extends BaseContext {
         news.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                nv.changingNewsIntent(HomeActivity.this);
+                nv.changingNewsFragment(HomeActivity.this);
                 navigation.setSelectedItemId(R.id.news_part);
 
             }
@@ -45,7 +42,7 @@ public class HomeActivity extends BaseContext {
         service.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                nv.changingServiceIntent(HomeActivity.this);
+                nv.changingServiceFragment(HomeActivity.this);
                 navigation.setSelectedItemId(R.id.service_part);
 
             }
@@ -104,4 +101,5 @@ public class HomeActivity extends BaseContext {
         }
         return super.onOptionsItemSelected(item);
     }
+
 }

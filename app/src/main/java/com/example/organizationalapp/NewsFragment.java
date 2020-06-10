@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -28,6 +29,8 @@ public class NewsFragment extends Fragment {
     View view;
     BottomNavigationView navigation;
     NavigationView navigationView;
+    Navigation nv;
+    TextView title;
     private FragmentActivity fragmentActivity;
     public static NewsFragment newInstance() {
         NewsFragment fragment = new NewsFragment();
@@ -46,6 +49,7 @@ public class NewsFragment extends Fragment {
 
         findView();
         setToolBar();
+        nv=new Navigation();
         ViewPager viewPager =view.findViewById(R.id.viewpager);
 
         ViewPagerNewsAdapt viewPagerNewsAdapt = new ViewPagerNewsAdapt(getChildFragmentManager());
@@ -61,6 +65,7 @@ public class NewsFragment extends Fragment {
     private void findView() {
         navigation = view.findViewById(R.id.navigation);
         navigationView = view.findViewById(R.id.navigation_view);
+        title=view.findViewById(R.id.up_title);
 
 
     }
@@ -78,32 +83,15 @@ public class NewsFragment extends Fragment {
         toolbars.setNavigationIcon(R.drawable.menu);
     }
     private void setNavigation() {
-        navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.service_part:
-                        item.setTitle("");
-                        ServiceFragment fragment2 = new ServiceFragment();
-                        FragmentManager fragmentManager = getFragmentManager();
-                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                        fragmentTransaction.setCustomAnimations(R.animator.enter_from_right, R.animator.exit_to_left, R.animator.enter_from_left, R.animator.exit_to_right);
-                        fragmentTransaction.addToBackStack(null);
-                        fragmentTransaction.replace(R.id.drawer, fragment2);
-                        fragmentTransaction.commit();
-                        break;
-                    case R.id.home_part:
-                        item.setTitle("");
-                        HomeFragment fragment = new HomeFragment();
-                        FragmentManager fragmentManager1 = getFragmentManager();
-                        FragmentTransaction fragmentTransaction1 = fragmentManager1.beginTransaction();
-                        fragmentTransaction1.setCustomAnimations(R.animator.enter_from_right, R.animator.exit_to_left, R.animator.enter_from_left, R.animator.exit_to_right);
-                        fragmentTransaction1.addToBackStack(null);
-                        fragmentTransaction1.replace(R.id.drawer, fragment);
-                        fragmentTransaction1.commit();
-                }
-                return false;
-            }
-        });
+        navigation.setSelectedItemId(R.id.news_part);
+        nv.setNavigation(navigationView, fragmentActivity);
+        nv.setButtomNavigation(navigation, fragmentActivity);
     }
+    @Override
+    public void onPause() {
+        title.setVisibility(View.INVISIBLE);
+        super.onPause();
+
+    }
+
 }

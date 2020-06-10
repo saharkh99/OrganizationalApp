@@ -23,7 +23,7 @@ public class BaseActivity extends AppCompatActivity {
         HomeFragment homeFragment = HomeFragment.newInstance();
         FragmentManager fragmentManager=getSupportFragmentManager();
         FragmentTransaction transaction=fragmentManager.beginTransaction();
-        transaction.setCustomAnimations(R.animator.enter_from_left, R.animator.exit_to_right, R.animator.enter_from_right, R.animator.exit_to_left);
+        transaction.setCustomAnimations(R.animator.enter_from_right, R.animator.exit_to_left, R.animator.enter_from_left, R.animator.exit_to_right);
         transaction.addToBackStack(null);
         transaction.add(R.id.fragment_container, homeFragment,"HomeFragment").commit();
 

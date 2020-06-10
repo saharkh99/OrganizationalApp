@@ -1,29 +1,20 @@
 package com.example.organizationalapp;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
-import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.organizationalapp.HomeActivity;
-import com.example.organizationalapp.NewsPart.NewsFragmentList;
-import com.example.organizationalapp.NewsPart.SecondPage;
-import com.example.organizationalapp.R;
-import com.example.organizationalapp.ServicePart.ServiceActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
 public class Navigation {
     FragmentManager fragmentManager;
-    public void setNavigation(NavigationView navigationView, final Context context) {
+    public void setNavigation(NavigationView navigationView, final FragmentActivity fragmentActivity) {
         View v = navigationView.getHeaderView(0);
         TextView name = v.findViewById(R.id.name);
         TextView intro = v.findViewById(R.id.intro);
@@ -37,16 +28,15 @@ public class Navigation {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.news_part:
-                        item.setTitle("");
-                        changingNewsIntent(context);
+                      changingNewsFragment(fragmentActivity);
+
                         break;
                     case R.id.service_part:
-                        item.setTitle("");
-                        changingServiceIntent(context);
+                    changingServiceFragment(fragmentActivity);
                         break;
                     case R.id.home_part:
                         item.setTitle("");
-                        changingHomeIntent(context);
+                    changingHomeFragment(fragmentActivity);
                         break;
                 }
                 return false;
@@ -54,44 +44,59 @@ public class Navigation {
         });
     }
 
-    public void setButtomNavigation(BottomNavigationView navigation, final Activity context) {
+    public void setButtomNavigation(BottomNavigationView navigation, final FragmentActivity fragmentActivity) {
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.news_part:
-                        item.setTitle("");
-                        changingNewsIntent(context);
+                        changingNewsFragment(fragmentActivity);
+
                         break;
                     case R.id.service_part:
-                        item.setTitle("");
-                        changingServiceIntent(context);
+                        changingServiceFragment(fragmentActivity);
                         break;
                     case R.id.home_part:
                         item.setTitle("");
-                        changingHomeIntent(context);
+                        changingHomeFragment(fragmentActivity);
                         break;
                 }
                 return false;
             }
+
+
         });
     }
 
-    public void changingNewsIntent(Context context) {
-        Intent intent = new Intent(context, SecondPage.class);
-
-        context.startActivity(intent);
+    public void changingNewsFragment(FragmentActivity fragmentActivity) {
+        NewsFragment fragment2 = new NewsFragment();
+        FragmentManager fragmentManager = fragmentActivity.getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.setCustomAnimations(R.animator.enter_from_right, R.animator.exit_to_left, R.animator.enter_from_left, R.animator.exit_to_right);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.replace(R.id.drawer, fragment2);
+        fragmentTransaction.commit();
     }
 
-    public void changingServiceIntent(Context context) {
+    public void changingServiceFragment(FragmentActivity fragmentActivity) {
 
-        Intent intent = new Intent(context, ServiceActivity.class);
-        context.startActivity(intent);
+        ServiceFragment fragment2 = new ServiceFragment();
+        FragmentManager fragmentManager = fragmentActivity.getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.setCustomAnimations(R.animator.enter_from_right, R.animator.exit_to_left, R.animator.enter_from_left, R.animator.exit_to_right);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.replace(R.id.drawer, fragment2);
+        fragmentTransaction.commit();
     }
 
-    public void changingHomeIntent(Context context) {
-        Intent intent = new Intent(context, HomeActivity.class);
-        context.startActivity(intent);
+    public void changingHomeFragment(FragmentActivity fragmentActivity) {
+        HomeFragment fragment2 = new HomeFragment();
+        FragmentManager fragmentManager = fragmentActivity.getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.setCustomAnimations(R.animator.enter_from_right, R.animator.exit_to_left, R.animator.enter_from_left, R.animator.exit_to_right);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.replace(R.id.drawer, fragment2);
+        fragmentTransaction.commit();
     }
 
 }

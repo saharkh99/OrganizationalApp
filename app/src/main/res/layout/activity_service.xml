@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ServicePart.ServiceActivity"
+    android:background="@color/colorPrimaryDark"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawer"
     android:layoutDirection="rtl">

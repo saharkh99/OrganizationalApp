@@ -1,5 +1,6 @@
 package com.example.organizationalapp;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -12,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -29,6 +31,8 @@ import java.util.List;
 public class ServiceFragment extends Fragment {
     NavigationView navigationView;
     BottomNavigationView navigation;
+    Navigation nv;
+    FragmentActivity fragmentActivity;
     FragmentTransaction fragmentTransaction;
     View view;
     public static ServiceFragment newInstance() {
@@ -41,6 +45,7 @@ public class ServiceFragment extends Fragment {
         view = inflater.inflate(R.layout.activity_service, container, false);
         findView();
         setToolBar();
+        nv=new Navigation();
         setNavigation();
         RecyclerView recyclerView = view.findViewById(R.id.recycle1);
         ServiceAdapter serviceAdapter = new ServiceAdapter(getActivity(), DataRecieveForService.getService(getActivity()));
@@ -60,7 +65,11 @@ public class ServiceFragment extends Fragment {
         recyclerView3.setAdapter(serviceAdapter3);
         return view;
     }
-
+    @Override
+    public void onAttach(Activity activity) {
+        fragmentActivity=(FragmentActivity) activity;
+        super.onAttach(activity);
+    }
     public void findView(){
         navigation = view.findViewById(R.id.navigation);
         navigationView = view.findViewById(R.id.navigation_view);
@@ -79,33 +88,9 @@ public class ServiceFragment extends Fragment {
         toolbars.setNavigationIcon(R.drawable.menu);
     }
     private void setNavigation() {
-        navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.news_part:
-                        item.setTitle("");
-                        NewsFragment fragment2 = new NewsFragment();
-                        FragmentManager fragmentManager = getFragmentManager();
-                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                        fragmentTransaction.setCustomAnimations(R.animator.enter_from_right, R.animator.exit_to_left, R.animator.enter_from_left, R.animator.exit_to_right);
-                        fragmentTransaction.addToBackStack(null);
-                        fragmentTransaction.replace(R.id.drawer, fragment2);
-                        fragmentTransaction.commit();
-                        break;
-                    case R.id.home_part:
-                        item.setTitle("");
-                        HomeFragment fragment = new HomeFragment();
-                        FragmentManager fragmentManager1 = getFragmentManager();
-                        FragmentTransaction fragmentTransaction1 = fragmentManager1.beginTransaction();
-                        fragmentTransaction1.setCustomAnimations(R.animator.enter_from_right, R.animator.exit_to_left, R.animator.enter_from_left, R.animator.exit_to_right);
-                        fragmentTransaction1.addToBackStack(null);
-                        fragmentTransaction1.replace(R.id.drawer, fragment);
-                        fragmentTransaction1.commit();
-                }
-                return false;
-            }
-        });
+        navigation.setSelectedItemId(R.id.service_part);
+        nv.setNavigation(navigationView, fragmentActivity);
+        nv.setButtomNavigation(navigation, fragmentActivity);
     }
 
 }

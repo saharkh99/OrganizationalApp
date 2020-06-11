@@ -32,6 +32,8 @@ public class MainActivity extends BaseContext {
 
                 if (checkNotEmpty(uname, upass)) {
                     Intent intent = new Intent(MainActivity.this, BaseActivity.class);
+                    intent.putExtra("code", 12);
+                   intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     User.name=uname;
                    // Bundle bundle = new Bundle();
                     //bundle.putString("name", uname);

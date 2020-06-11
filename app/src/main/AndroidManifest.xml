@@ -13,10 +13,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".BaseActivity"></activity>
         <activity android:name=".MainActivity" />
-        <activity android:name=".ServicePart.ServiceActivity" />
-        <activity android:name=".HomeActivity" />
         <activity android:name=".NewsPart.NewsActivity" />
-        <activity android:name=".NewsPart.SecondPage" />
         <activity
             android:name=".Preview"
             android:theme="@style/Theme.MaterialComponents.Light.NoActionBar">

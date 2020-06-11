@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.organizationalapp.BaseActivity;
 import com.example.organizationalapp.ForntPart.BaseContext;
 import com.example.organizationalapp.Navigation;
 import com.example.organizationalapp.R;
@@ -92,13 +93,11 @@ public class NewsActivity extends BaseContext {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(NewsActivity.this,SecondPage.class);
+                Intent intent=new Intent(NewsActivity.this, BaseActivity.class);
+                intent.addFlags(Intent.FLAG_FROM_BACKGROUND);
                 startActivity(intent);
             }
         });
-
-
-
     }
 
 

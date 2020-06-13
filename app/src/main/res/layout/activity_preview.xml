@@ -41,7 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="2dp"
+        android:layout_marginBottom="5dp"
         android:padding="15dp"
         android:text="Power by IRISA.co"
         android:textColor="@color/colorPrimaryDark"

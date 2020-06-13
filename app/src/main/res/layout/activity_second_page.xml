@@ -73,7 +73,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/fragment_container">
-<androidx.viewpager.widget.ViewPager
+
+<com.duolingo.open.rtlviewpager.RtlViewPager
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:id="@+id/viewpager">
@@ -91,7 +92,7 @@
         app:tabTextColor="@color/textColor"
         android:paddingTop="4dp" />
 
-</androidx.viewpager.widget.ViewPager>
+</com.duolingo.open.rtlviewpager.RtlViewPager>
     </FrameLayout>
 </LinearLayout>
         <FrameLayout android:layout_width="match_parent"

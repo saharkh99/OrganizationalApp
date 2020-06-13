@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import com.example.organizationalapp.NewsPart.NewsFragmentList;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 
 public class ViewPagerNewsAdapt extends FragmentPagerAdapter {
@@ -27,6 +28,7 @@ public class ViewPagerNewsAdapt extends FragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
+
         return titles.get(position);
     }
 

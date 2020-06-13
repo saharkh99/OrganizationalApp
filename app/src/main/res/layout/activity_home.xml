@@ -87,29 +87,39 @@
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="2"
+                android:gravity="center"
                 android:layout_gravity="center"
                 android:orientation="horizontal">
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/news_btn"
-                    android:layout_width="wrap_content"
+                    android:layout_width="120dp"
                     android:layout_height="100dp"
+                    android:layout_weight="1"
                     android:layout_margin="10dp"
                     style="@style/stroke"
                     android:textStyle="bold"
-                    android:drawableTop="@drawable/newswhitech"
-
                     android:background="@drawable/buttons"
+                    android:padding="5dp"
                     android:text="@string/string_news"
+                    android:drawableTop="@drawable/newswhitech"
+                    android:drawableTint="@color/colorPrimaryDark"
+                    app:iconTint="@color/colorPrimaryDark"
                     android:textColor="@color/colorPrimaryDark"
-                    android:textSize="14dp" />
+                    android:textSize="14dp" >
+
+                </com.google.android.material.button.MaterialButton>
+
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/service_btn"
                     android:layout_width="120dp"
                     android:layout_height="100dp"
+                    android:layout_weight="1"
                     android:layout_margin="10dp"
                     android:textStyle="bold"
+                    android:padding="10dp"
+                    android:drawableTint="@color/colorPrimaryDark"
                     android:drawableTop="@drawable/khadamatwhitech"
                     android:background="@drawable/buttons"
                     android:text="@string/string_service"

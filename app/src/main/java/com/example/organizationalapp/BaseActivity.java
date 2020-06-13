@@ -29,12 +29,15 @@ public class BaseActivity extends AppCompatActivity {
             HomeFragment homeFragment = HomeFragment.newInstance();
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction transaction = fragmentManager.beginTransaction();
+            fragmentManager.popBackStack("BACK_STACK_ROOT_TAG", FragmentManager.POP_BACK_STACK_INCLUSIVE);
             transaction.setCustomAnimations(R.animator.enter_from_right, R.animator.exit_to_left, R.animator.enter_from_left, R.animator.exit_to_right);
-            transaction.addToBackStack(null);
+           // transaction.addToBackStack(String.valueOf(homeFragment));
             transaction.add(R.id.fragment_container, homeFragment, "HomeFragment").commit();
 
 
+
         }
+
         else {
             NewsFragment newsFragment = NewsFragment.newInstance();
             FragmentManager fragmentManager=getSupportFragmentManager();

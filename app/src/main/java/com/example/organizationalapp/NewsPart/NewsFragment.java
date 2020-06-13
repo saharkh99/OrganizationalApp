@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
 import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
@@ -15,6 +16,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
 
 import com.duolingo.open.rtlviewpager.RtlViewPager;
 import com.example.organizationalapp.Navigation;
@@ -29,7 +31,6 @@ public class NewsFragment extends Fragment {
     BottomNavigationView navigation;
     NavigationView navigationView;
     Navigation nv;
-    TextView title;
     TabLayout tabLayout;
     private FragmentActivity fragmentActivity;
     public static NewsFragment newInstance() {
@@ -69,7 +70,6 @@ public class NewsFragment extends Fragment {
     private void findView() {
         navigation = view.findViewById(R.id.navigation);
         navigationView = view.findViewById(R.id.navigation_view);
-        title=view.findViewById(R.id.up_title);
         tabLayout=view.findViewById(R.id.pager_header);
 
 
@@ -78,7 +78,6 @@ public class NewsFragment extends Fragment {
         Toolbar toolbars =view.findViewById(R.id.toolbar);
         DrawerLayout drawerLayout = view.findViewById(R.id.drawer);
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbars);
-
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(false);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -91,12 +90,12 @@ public class NewsFragment extends Fragment {
         navigation.setSelectedItemId(R.id.news_part);
         nv.setNavigation(navigationView, fragmentActivity);
         nv.setButtomNavigation(navigation, fragmentActivity);
+
     }
     @Override
     public void onPause() {
-        title.setVisibility(View.INVISIBLE);
+       // title.setVisibility(View.INVISIBLE);
         super.onPause();
-
     }
 
 }

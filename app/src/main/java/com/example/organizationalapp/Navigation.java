@@ -2,9 +2,11 @@ package com.example.organizationalapp;
 
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -14,8 +16,10 @@ import com.example.organizationalapp.ServicePart.ServiceFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
-public class Navigation {
+public class Navigation{
     FragmentManager fragmentManager;
+    boolean flag=false;
+
     public void setNavigation(NavigationView navigationView, final FragmentActivity fragmentActivity) {
         View v = navigationView.getHeaderView(0);
         TextView name = v.findViewById(R.id.name);
@@ -30,15 +34,15 @@ public class Navigation {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.news_part:
-                      changingNewsFragment(fragmentActivity);
+                        changingNewsFragment(fragmentActivity);
 
                         break;
                     case R.id.service_part:
-                    changingServiceFragment(fragmentActivity);
+                        changingServiceFragment(fragmentActivity);
                         break;
                     case R.id.home_part:
                         item.setTitle("");
-                    changingHomeFragment(fragmentActivity);
+                        changingHomeFragment(fragmentActivity);
                         break;
                 }
                 return false;
@@ -74,10 +78,16 @@ public class Navigation {
         NewsFragment fragment2 = new NewsFragment();
         FragmentManager fragmentManager = fragmentActivity.getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.setCustomAnimations(R.animator.enter_from_right, R.animator.exit_to_left, R.animator.enter_from_left, R.animator.exit_to_right);
-        fragmentTransaction.addToBackStack(null);
+
+        /////////////////////////////////////////////////////////////////////////////////////////////
+
+        fragmentTransaction.setCustomAnimations(R.animator.enter_from_right, R.animator.exit_to_left);
         fragmentTransaction.replace(R.id.drawer, fragment2);
+        fragmentTransaction.addToBackStack("BACK_STACK_ROOT_TAG");
+        fragmentManager.popBackStack("BACK_STACK_ROOT_TAG", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+        /////////////////////////////////////////////////////////////////////////////////////////////
         fragmentTransaction.commit();
+
     }
 
     public void changingServiceFragment(FragmentActivity fragmentActivity) {
@@ -85,17 +95,26 @@ public class Navigation {
         ServiceFragment fragment2 = new ServiceFragment();
         FragmentManager fragmentManager = fragmentActivity.getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.setCustomAnimations(R.animator.enter_from_right, R.animator.exit_to_left, R.animator.enter_from_left, R.animator.exit_to_right);
-        fragmentTransaction.addToBackStack(null);
+
+        /////////////////////////////////////////////////////////////////////////////////////////////
+
+        fragmentTransaction.setCustomAnimations(R.animator.enter_from_right, R.animator.exit_to_left);
         fragmentTransaction.replace(R.id.drawer, fragment2);
+        fragmentTransaction.addToBackStack("BACK_STACK_ROOT_TAG");
+        fragmentManager.popBackStack("BACK_STACK_ROOT_TAG", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+        /////////////////////////////////////////////////////////////////////////////////////////////
         fragmentTransaction.commit();
+
+
     }
 
     public void changingHomeFragment(FragmentActivity fragmentActivity) {
         HomeFragment fragment2 = new HomeFragment();
         FragmentManager fragmentManager = fragmentActivity.getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.setCustomAnimations(R.animator.enter_from_right, R.animator.exit_to_left, R.animator.enter_from_left, R.animator.exit_to_right);
+        fragmentTransaction.setCustomAnimations(R.animator.enter_from_right, R.animator.exit_to_left);
+        // fragmentTransaction.addToBackStack("home");
+        //fragmentManager.popBackStack("BACK_STACK_ROOT_TAG", FragmentManager.POP_BACK_STACK_INCLUSIVE);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.replace(R.id.drawer, fragment2);
         fragmentTransaction.commit();

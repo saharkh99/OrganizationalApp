@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +13,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -29,7 +31,6 @@ public class ServiceFragment extends Fragment {
     BottomNavigationView navigation;
     Navigation nv;
     FragmentActivity fragmentActivity;
-    FragmentTransaction fragmentTransaction;
     View view;
     public static ServiceFragment newInstance() {
         ServiceFragment fragment = new ServiceFragment();
@@ -87,6 +88,7 @@ public class ServiceFragment extends Fragment {
         navigation.setSelectedItemId(R.id.service_part);
         nv.setNavigation(navigationView, fragmentActivity);
         nv.setButtomNavigation(navigation, fragmentActivity);
+
     }
 
 }

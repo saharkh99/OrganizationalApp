@@ -16,6 +16,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
 import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -31,7 +32,7 @@ public class HomeFragment extends Fragment {
     NavigationView navigationView;
     static TextView welcome;
     Navigation nv;
-
+    FragmentTransaction fragmentTransaction;
     public static HomeFragment newInstance() {
         HomeFragment fragment = new HomeFragment();
         return fragment;
@@ -68,7 +69,6 @@ public class HomeFragment extends Fragment {
             public void onClick(View view) {
                 navigation.setSelectedItemId(R.id.service_part);
                 nv.changingServiceFragment(fragmentActivity);
-
             }
         });
 
@@ -108,4 +108,5 @@ public class HomeFragment extends Fragment {
         super.onPause();
 
     }
+
 }

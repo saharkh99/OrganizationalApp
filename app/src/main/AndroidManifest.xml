@@ -5,7 +5,7 @@
     <application
         android:name=".ForntPart.Font"
         android:allowBackup="true"
-        android:hardwareAccelerated="false"
+        android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"

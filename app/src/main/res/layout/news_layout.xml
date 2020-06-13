@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<com.google.android.material.card.MaterialCardView
-    android:layout_width="match_parent"
+<com.google.android.material.card.MaterialCardView android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card-view="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
     android:id="@+id/news_cardview"
     card-view:cardCornerRadius="10dp"
     android:orientation="horizontal"
     android:layout_margin="15dp"
+    card_view:cardUseCompatPadding="true"
     card-view:cardElevation="5dp"
     android:layout_height="wrap_content">
 

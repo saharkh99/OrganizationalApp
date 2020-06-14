@@ -3,9 +3,9 @@
 <androidx.drawerlayout.widget.DrawerLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:background="@color/colorPrimaryDark"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/colorPrimaryDark"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawer"
     android:layoutDirection="rtl">
@@ -57,9 +57,10 @@
     android:paddingRight="20dp"
     android:textColor="@color/textColor"
     android:paddingTop="10dp"
+    android:background="@color/design_default_color_surface"
     android:textStyle="bold"
     android:textSize="16dp"
-    android:layout_weight="0.5"/>
+    android:layout_weight="0.6"/>
         <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:layout_width="match_parent"
@@ -165,25 +166,29 @@
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigation_view"
         android:layout_width="250dp"
+        android:layout_marginTop="?attr/actionBarSize"
         app:itemIconTint="@drawable/selector2"
         app:headerLayout="@layout/navigation_header"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+
+        app:itemTextAppearance="@style/TextAppearance.AppCompat.Menu"
         app:menu="@menu/start_navigation">
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:gravity="center_horizontal"
             android:orientation="vertical"
-            android:layout_margin="10dp"
+            android:layout_margin="20dp"
             android:layout_gravity="bottom">
             <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:src="@drawable/irisa"/>
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:padding="6dp"
+                android:textSize="12dp"
                 android:layout_height="wrap_content"
                 android:text="طراحی و پیاده سازی توسط شرکت ایریسا"/>
 

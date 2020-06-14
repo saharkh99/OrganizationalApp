@@ -28,6 +28,7 @@ public class NewsActivity extends BaseContext {
     BottomNavigationView navigation;
     NavigationView navigationView;
     Navigation nv;
+    DrawerLayout drawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,7 @@ public class NewsActivity extends BaseContext {
         setToolBar();
         nv=new Navigation();
         setNavigation();
+        drawerLayout.setScrimColor(getResources().getColor(android.R.color.transparent));
 
     }
 
@@ -58,6 +60,7 @@ public class NewsActivity extends BaseContext {
         imgTV=findViewById(R.id.img_news);
         navigation = findViewById(R.id.navigation);
         navigationView = findViewById(R.id.navigation_view);
+        drawerLayout=findViewById(R.id.drawer);
     }
 
     private void getData() {

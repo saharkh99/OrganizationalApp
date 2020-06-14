@@ -8,4 +8,5 @@
     <color name="error_color">#EEC23D3D</color>
     <color name="color_title">#EE161515</color>
     <color name="color_des">#EE3C3838</color>
+    <color name="gray">#94A5A0</color>
 </resources>

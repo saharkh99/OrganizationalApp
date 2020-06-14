@@ -115,7 +115,7 @@ public class Navigation{
         fragmentTransaction.setCustomAnimations(R.animator.enter_from_right, R.animator.exit_to_left);
         // fragmentTransaction.addToBackStack("home");
         //fragmentManager.popBackStack("BACK_STACK_ROOT_TAG", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.addToBackStack("BACK_STACK_ROOT_TAG");
         fragmentTransaction.replace(R.id.drawer, fragment2);
         fragmentTransaction.commit();
     }

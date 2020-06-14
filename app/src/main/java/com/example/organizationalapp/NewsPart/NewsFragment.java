@@ -32,6 +32,7 @@ public class NewsFragment extends Fragment {
     NavigationView navigationView;
     Navigation nv;
     TabLayout tabLayout;
+    DrawerLayout drawerLayout;
     private FragmentActivity fragmentActivity;
     public static NewsFragment newInstance() {
         NewsFragment fragment = new NewsFragment();
@@ -52,6 +53,8 @@ public class NewsFragment extends Fragment {
         findView();
         setToolBar();
         nv=new Navigation();
+        drawerLayout=view.findViewById(R.id.drawer);
+        drawerLayout.setScrimColor(getResources().getColor(android.R.color.transparent));
         RtlViewPager viewPager =view.findViewById(R.id.viewpager);
 
         ViewPagerNewsAdapt viewPagerNewsAdapt = new ViewPagerNewsAdapt(getChildFragmentManager());

@@ -30,6 +30,7 @@ public class ServiceFragment extends Fragment {
     NavigationView navigationView;
     BottomNavigationView navigation;
     Navigation nv;
+    DrawerLayout drawerLayout;
     FragmentActivity fragmentActivity;
     View view;
     public static ServiceFragment newInstance() {
@@ -60,6 +61,8 @@ public class ServiceFragment extends Fragment {
         ServiceAdapter serviceAdapter3 = new ServiceAdapter(getActivity(), DataRecieveForService.getService(getActivity()));
         recyclerView3.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false));
         recyclerView3.setAdapter(serviceAdapter3);
+        drawerLayout=view.findViewById(R.id.drawer);
+        drawerLayout.setScrimColor(getResources().getColor(android.R.color.transparent));
         return view;
     }
     @Override

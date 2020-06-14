@@ -32,7 +32,7 @@ public class HomeFragment extends Fragment {
     NavigationView navigationView;
     static TextView welcome;
     Navigation nv;
-    FragmentTransaction fragmentTransaction;
+    DrawerLayout drawerLayout;
     public static HomeFragment newInstance() {
         HomeFragment fragment = new HomeFragment();
         return fragment;
@@ -54,6 +54,9 @@ public class HomeFragment extends Fragment {
         setToolBar();
         nv=new Navigation();
         setNavigation();
+        drawerLayout=view.findViewById(R.id.drawer);
+        drawerLayout.setScrimColor(getResources().getColor(android.R.color.transparent));
+
 
 
         news.setOnClickListener(new View.OnClickListener() {

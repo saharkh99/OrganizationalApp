@@ -3,6 +3,7 @@ package com.example.organizationalapp.NewsPart;
 import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -99,6 +100,15 @@ public class NewsFragment extends Fragment {
     public void onPause() {
        // title.setVisibility(View.INVISIBLE);
         super.onPause();
+    }
+
+    @Override
+    public void onResume() {
+        Log.d("home", "resume"+Navigation.homeFlag+"  news"+Navigation.newsFlag+" ser"+Navigation.serviceFlag);
+        Navigation.homeFlag=false;
+        Navigation.newsFlag=true;
+        Navigation.serviceFlag=false;
+        super.onResume();
     }
 
 }

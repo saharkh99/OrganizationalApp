@@ -2,6 +2,7 @@ package com.example.organizationalapp.ServicePart;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -94,4 +95,12 @@ public class ServiceFragment extends Fragment {
 
     }
 
+    @Override
+    public void onResume() {
+        Log.d("home", "resume"+Navigation.homeFlag+"  news"+Navigation.newsFlag+" ser"+Navigation.serviceFlag);
+        Navigation.homeFlag=false;
+        Navigation.newsFlag=false;
+        Navigation.serviceFlag=true;
+        super.onResume();
+    }
 }

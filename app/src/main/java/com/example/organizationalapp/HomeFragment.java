@@ -13,6 +13,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,6 +49,7 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.activity_home, container, false);
+        //Navigation.homeFlag=true;
 
         findView();
         welcome.setText(User.getName() + "   عزیز" + "\n" + "به برنامه جامع خوش آمدید");
@@ -108,8 +110,18 @@ public class HomeFragment extends Fragment {
     @Override
     public void onPause() {
         welcome.setVisibility(View.INVISIBLE);
+        Log.d("home", "pause"+Navigation.homeFlag);
+
         super.onPause();
 
     }
 
+    @Override
+    public void onResume() {
+        Log.d("home", "resume"+Navigation.homeFlag+"  news"+Navigation.newsFlag+" ser"+Navigation.serviceFlag);
+        Navigation.homeFlag=true;
+        Navigation.newsFlag=false;
+        Navigation.serviceFlag=false;
+        super.onResume();
+    }
 }

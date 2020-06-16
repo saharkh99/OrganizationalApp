@@ -104,10 +104,10 @@ public class NewsFragment extends Fragment {
 
     @Override
     public void onResume() {
-        Log.d("home", "resume"+Navigation.homeFlag+"  news"+Navigation.newsFlag+" ser"+Navigation.serviceFlag);
-        Navigation.homeFlag=false;
-        Navigation.newsFlag=true;
-        Navigation.serviceFlag=false;
+//        Log.d("home", "resume"+Navigation.homeFlag+"  news"+Navigation.newsFlag+" ser"+Navigation.serviceFlag);
+//        Navigation.homeFlag=false;
+//        Navigation.newsFlag=true;
+//        Navigation.serviceFlag=false;
         super.onResume();
     }
 

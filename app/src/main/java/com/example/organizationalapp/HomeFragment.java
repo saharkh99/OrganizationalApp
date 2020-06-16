@@ -110,7 +110,7 @@ public class HomeFragment extends Fragment {
     @Override
     public void onPause() {
         welcome.setVisibility(View.INVISIBLE);
-        Log.d("home", "pause"+Navigation.homeFlag);
+        //Log.d("home", "pause"+Navigation.homeFlag);
 
         super.onPause();
 
@@ -118,10 +118,10 @@ public class HomeFragment extends Fragment {
 
     @Override
     public void onResume() {
-        Log.d("home", "resume"+Navigation.homeFlag+"  news"+Navigation.newsFlag+" ser"+Navigation.serviceFlag);
-        Navigation.homeFlag=true;
-        Navigation.newsFlag=false;
-        Navigation.serviceFlag=false;
+//        Log.d("home", "resume"+Navigation.homeFlag+"  news"+Navigation.newsFlag+" ser"+Navigation.serviceFlag);
+//        Navigation.homeFlag=true;
+//        Navigation.newsFlag=false;
+//        Navigation.serviceFlag=false;
         super.onResume();
     }
 }

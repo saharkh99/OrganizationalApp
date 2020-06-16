@@ -25,19 +25,19 @@ public class BaseActivity extends AppCompatActivity {
         frameLayout=findViewById(R.id.fragment_container);
         //String code=intent.getStringExtra("code");
         //Log.d("code", code);
-        Navigation.homeFlag=false;
+      //  Navigation.homeFlag=false;
         if(getIntent().getFlags()==Intent.FLAG_ACTIVITY_NEW_TASK){
-            if(Navigation.homeFlag!=true) {
-                Navigation.homeFlag=true;
+         //   if(Navigation.homeFlag!=true) {
+          //      Navigation.homeFlag=true;
                 HomeFragment homeFragment = HomeFragment.newInstance();
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
-                fragmentManager.popBackStack("BACK_STACK_ROOT_TAG", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                transaction.setCustomAnimations(R.animator.enter_from_right, R.animator.exit_to_left, R.animator.enter_from_left, R.animator.exit_to_right);
+               // fragmentManager.popBackStack("BACK_STACK_ROOT_TAG", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                transaction.setCustomAnimations(R.animator.enter_from_right, R.animator.exit_to_left,R.animator.enter_from_right, R.animator.exit_to_left);
                 // transaction.addToBackStack(String.valueOf(homeFragment));
                 transaction.add(R.id.fragment_container, homeFragment, "HomeFragment").commit();
 
-            }
+         //   }
 
         }
 
@@ -45,10 +45,9 @@ public class BaseActivity extends AppCompatActivity {
             NewsFragment newsFragment = NewsFragment.newInstance();
             FragmentManager fragmentManager=getSupportFragmentManager();
             FragmentTransaction transaction=fragmentManager.beginTransaction();
-            fragmentManager.popBackStack("BACK_STACK_ROOT_TAG", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+           // fragmentManager.popBackStack("BACK_STACK_ROOT_TAG", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
-            transaction.setCustomAnimations(R.animator.enter_from_right, R.animator.exit_to_left, R.animator.enter_from_left, R.animator.exit_to_right);
-          //  transaction.addToBackStack(null);
+            transaction.setCustomAnimations(R.animator.enter_from_right, R.animator.exit_to_left, R.animator.enter_from_right, R.animator.exit_to_left);
            // Navigation.homeFlag=true;
           //  Navigation.serviceFlag=false;
           //  Navigation.newsFlag=false;

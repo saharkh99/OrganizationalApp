@@ -33,6 +33,7 @@ public class ServiceFragment extends Fragment {
     Navigation nv;
     DrawerLayout drawerLayout;
     FragmentActivity fragmentActivity;
+    boolean booltrans;
     View view;
     public static ServiceFragment newInstance() {
         ServiceFragment fragment = new ServiceFragment();
@@ -97,10 +98,10 @@ public class ServiceFragment extends Fragment {
 
     @Override
     public void onResume() {
-        Log.d("home", "resume"+Navigation.homeFlag+"  news"+Navigation.newsFlag+" ser"+Navigation.serviceFlag);
-        Navigation.homeFlag=false;
-        Navigation.newsFlag=false;
-        Navigation.serviceFlag=true;
+//        Log.d("home", "resume"+Navigation.homeFlag+"  news"+Navigation.newsFlag+" ser"+Navigation.serviceFlag);
+//        Navigation.homeFlag=false;
+//        Navigation.newsFlag=false;
+//        Navigation.serviceFlag=true;
         super.onResume();
     }
 }

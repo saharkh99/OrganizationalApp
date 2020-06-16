@@ -29,7 +29,6 @@ import com.google.android.material.tabs.TabLayout;
 public class NewsFragment extends Fragment {
 
     View view;
-    BottomNavigationView navigation;
     NavigationView navigationView;
     Navigation nv;
     TabLayout tabLayout;
@@ -70,7 +69,6 @@ public class NewsFragment extends Fragment {
     }
 
     private void findView() {
-        navigation = view.findViewById(R.id.navigation);
         navigationView = view.findViewById(R.id.navigation_view);
         tabLayout = view.findViewById(R.id.pager_header);
 
@@ -91,10 +89,7 @@ public class NewsFragment extends Fragment {
     }
 
     private void setNavigation() {
-        navigation.setSelectedItemId(R.id.news_part);
         nv.setNavigation(navigationView, fragmentActivity);
-        nv.setButtomNavigation(navigation, fragmentActivity);
-
     }
 
 }

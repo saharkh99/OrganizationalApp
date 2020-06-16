@@ -18,7 +18,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
 public class Navigation {
-    static boolean homeClicked, serviceClicked, newsClicked = false;
+    public static boolean homeClicked, serviceClicked, newsClicked = false;
 
     public void setNavigation(NavigationView navigationView, final FragmentActivity fragmentActivity) {
         View v = navigationView.getHeaderView(0);
@@ -49,31 +49,6 @@ public class Navigation {
             }
         });
     }
-
-    public void setButtomNavigation(BottomNavigationView navigation, final FragmentActivity fragmentActivity) {
-        navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.news_part:
-                        changingNewsFragment(fragmentActivity);
-
-                        break;
-                    case R.id.service_part:
-                        changingServiceFragment(fragmentActivity);
-                        break;
-                    case R.id.home_part:
-                        item.setTitle("");
-                        changingHomeFragment(fragmentActivity);
-                        break;
-                }
-                return false;
-            }
-
-
-        });
-    }
-
     public void changingNewsFragment(FragmentActivity fragmentActivity) {
 
         if (!this.newsClicked) {
@@ -127,6 +102,7 @@ public class Navigation {
             this.serviceClicked = false;
             this.newsClicked = false;
             this.homeClicked = true;
+            Fragment fragment;
         }
     }
 

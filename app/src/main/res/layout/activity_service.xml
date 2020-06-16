@@ -148,19 +148,6 @@
 
         </FrameLayout>
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/navigation"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="0.75"
-            android:padding="3dp"
-            android:layout_gravity="bottom"
-            android:elevation="5dp"
-            app:labelVisibilityMode="unlabeled"
-            app:itemIconTint="@drawable/selector"
-            app:itemIconSize="30dp"
-            app:menu="@menu/navigation" />
-
 
     </LinearLayout>
     <com.google.android.material.navigation.NavigationView

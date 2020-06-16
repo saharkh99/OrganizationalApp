@@ -29,7 +29,6 @@ public class HomeFragment extends Fragment {
     View view;
     FragmentActivity fragmentActivity;
     MaterialButton news, service;
-    BottomNavigationView navigation;
     NavigationView navigationView;
     static TextView welcome;
     Navigation nv;
@@ -52,6 +51,7 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.activity_home, container, false);
         //Navigation.homeFlag=true;
+        BaseActivity.navigation.setSelectedItemId(R.id.home_part);
 
         findView();
         welcome.setText(User.getName() + "   عزیز" + "\n" + "به برنامه جامع خوش آمدید");
@@ -65,7 +65,7 @@ public class HomeFragment extends Fragment {
         news.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                navigation.setSelectedItemId(R.id.news_part);
+                BaseActivity.navigation.setSelectedItemId(R.id.news_part);
                 nv.changingNewsFragment(fragmentActivity);
 
             }
@@ -73,7 +73,7 @@ public class HomeFragment extends Fragment {
         service.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                navigation.setSelectedItemId(R.id.service_part);
+                BaseActivity.navigation.setSelectedItemId(R.id.service_part);
                 nv.changingServiceFragment(fragmentActivity);
             }
         });
@@ -85,7 +85,6 @@ public class HomeFragment extends Fragment {
         news = view.findViewById(R.id.news_btn);
         service = view.findViewById(R.id.service_btn);
         welcome = view.findViewById(R.id.welcome);
-        navigation = view.findViewById(R.id.navigation);
         navigationView = view.findViewById(R.id.navigation_view);
     }
 
@@ -104,9 +103,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void setNavigation() {
-        navigation.setSelectedItemId(R.id.home_part);
         nv.setNavigation(navigationView, fragmentActivity);
-        nv.setButtomNavigation(navigation, fragmentActivity);
     }
 
     @Override

@@ -29,7 +29,6 @@ import java.util.List;
 
 public class ServiceFragment extends Fragment {
     NavigationView navigationView;
-    BottomNavigationView navigation;
     Navigation nv;
     DrawerLayout drawerLayout;
     FragmentActivity fragmentActivity;
@@ -77,7 +76,6 @@ public class ServiceFragment extends Fragment {
     }
 
     public void findView() {
-        navigation = view.findViewById(R.id.navigation);
         navigationView = view.findViewById(R.id.navigation_view);
     }
 
@@ -96,9 +94,7 @@ public class ServiceFragment extends Fragment {
     }
 
     private void setNavigation() {
-        navigation.setSelectedItemId(R.id.service_part);
         nv.setNavigation(navigationView, fragmentActivity);
-        nv.setButtomNavigation(navigation, fragmentActivity);
 
     }
 

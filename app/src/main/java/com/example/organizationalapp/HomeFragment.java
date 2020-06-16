@@ -34,13 +34,15 @@ public class HomeFragment extends Fragment {
     static TextView welcome;
     Navigation nv;
     DrawerLayout drawerLayout;
+
     public static HomeFragment newInstance() {
         HomeFragment fragment = new HomeFragment();
         return fragment;
     }
+
     @Override
     public void onAttach(Activity activity) {
-        fragmentActivity=(FragmentActivity) activity;
+        fragmentActivity = (FragmentActivity) activity;
         super.onAttach(activity);
     }
 
@@ -54,11 +56,10 @@ public class HomeFragment extends Fragment {
         findView();
         welcome.setText(User.getName() + "   عزیز" + "\n" + "به برنامه جامع خوش آمدید");
         setToolBar();
-        nv=new Navigation();
+        nv = new Navigation();
         setNavigation();
-        drawerLayout=view.findViewById(R.id.drawer);
+        drawerLayout = view.findViewById(R.id.drawer);
         drawerLayout.setScrimColor(getResources().getColor(android.R.color.transparent));
-
 
 
         news.setOnClickListener(new View.OnClickListener() {
@@ -79,6 +80,7 @@ public class HomeFragment extends Fragment {
 
         return view;
     }
+
     private void findView() {
         news = view.findViewById(R.id.news_btn);
         service = view.findViewById(R.id.service_btn);
@@ -88,9 +90,9 @@ public class HomeFragment extends Fragment {
     }
 
     public void setToolBar() {
-        Toolbar toolbars =view.findViewById(R.id.toolbar);
+        Toolbar toolbars = view.findViewById(R.id.toolbar);
         DrawerLayout drawerLayout = view.findViewById(R.id.drawer);
-        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbars);
+        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbars);
 
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(false);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -110,18 +112,7 @@ public class HomeFragment extends Fragment {
     @Override
     public void onPause() {
         welcome.setVisibility(View.INVISIBLE);
-        //Log.d("home", "pause"+Navigation.homeFlag);
-
         super.onPause();
 
-    }
-
-    @Override
-    public void onResume() {
-//        Log.d("home", "resume"+Navigation.homeFlag+"  news"+Navigation.newsFlag+" ser"+Navigation.serviceFlag);
-//        Navigation.homeFlag=true;
-//        Navigation.newsFlag=false;
-//        Navigation.serviceFlag=false;
-        super.onResume();
     }
 }

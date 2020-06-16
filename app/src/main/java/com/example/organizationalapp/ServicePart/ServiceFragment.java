@@ -35,24 +35,26 @@ public class ServiceFragment extends Fragment {
     FragmentActivity fragmentActivity;
     boolean booltrans;
     View view;
+
     public static ServiceFragment newInstance() {
         ServiceFragment fragment = new ServiceFragment();
         return fragment;
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.activity_service, container, false);
         findView();
         setToolBar();
-        nv=new Navigation();
+        nv = new Navigation();
         setNavigation();
         RecyclerView recyclerView = view.findViewById(R.id.recycle1);
         ServiceAdapter serviceAdapter = new ServiceAdapter(getActivity(), DataRecieveForService.getService(getActivity()));
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false));
         recyclerView.setAdapter(serviceAdapter);
-        List<Services> list=new ArrayList<>();
-        list=DataRecieveForService.getService(getActivity());
+        List<Services> list = new ArrayList<>();
+        list = DataRecieveForService.getService(getActivity());
         //.....................................................................................................
         RecyclerView recyclerView2 = view.findViewById(R.id.recycle2);
         ServiceAdapter serviceAdapter2 = new ServiceAdapter(getActivity(), DataRecieveForService.getService(getActivity()));
@@ -63,23 +65,26 @@ public class ServiceFragment extends Fragment {
         ServiceAdapter serviceAdapter3 = new ServiceAdapter(getActivity(), DataRecieveForService.getService(getActivity()));
         recyclerView3.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false));
         recyclerView3.setAdapter(serviceAdapter3);
-        drawerLayout=view.findViewById(R.id.drawer);
+        drawerLayout = view.findViewById(R.id.drawer);
         drawerLayout.setScrimColor(getResources().getColor(android.R.color.transparent));
         return view;
     }
+
     @Override
     public void onAttach(Activity activity) {
-        fragmentActivity=(FragmentActivity) activity;
+        fragmentActivity = (FragmentActivity) activity;
         super.onAttach(activity);
     }
-    public void findView(){
+
+    public void findView() {
         navigation = view.findViewById(R.id.navigation);
         navigationView = view.findViewById(R.id.navigation_view);
     }
+
     public void setToolBar() {
-        Toolbar toolbars =view.findViewById(R.id.toolbar);
+        Toolbar toolbars = view.findViewById(R.id.toolbar);
         DrawerLayout drawerLayout = view.findViewById(R.id.drawer);
-        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbars);
+        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbars);
 
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(false);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -89,6 +94,7 @@ public class ServiceFragment extends Fragment {
         drawerToggle.syncState();
         toolbars.setNavigationIcon(R.drawable.menu);
     }
+
     private void setNavigation() {
         navigation.setSelectedItemId(R.id.service_part);
         nv.setNavigation(navigationView, fragmentActivity);
@@ -98,10 +104,6 @@ public class ServiceFragment extends Fragment {
 
     @Override
     public void onResume() {
-//        Log.d("home", "resume"+Navigation.homeFlag+"  news"+Navigation.newsFlag+" ser"+Navigation.serviceFlag);
-//        Navigation.homeFlag=false;
-//        Navigation.newsFlag=false;
-//        Navigation.serviceFlag=true;
         super.onResume();
     }
 }

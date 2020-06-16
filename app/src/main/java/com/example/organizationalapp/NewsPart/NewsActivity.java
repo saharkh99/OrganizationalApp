@@ -37,7 +37,9 @@ public class NewsActivity extends BaseContext {
     BottomNavigationView navigation;
     NavigationView navigationView;
     Navigation nv;
+     public static int code=0;
     DrawerLayout drawerLayout;
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,8 +106,10 @@ public class NewsActivity extends BaseContext {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(NewsActivity.this, BaseActivity.class);
+                code=1;
+                intent=new Intent(NewsActivity.this, BaseActivity.class);
                 intent.addFlags(Intent.FLAG_FROM_BACKGROUND);
+                intent.putExtra("fra", "x");
                 startActivity(intent);
             }
         });
@@ -121,7 +125,9 @@ public class NewsActivity extends BaseContext {
                     case R.id.news_part:
                         if(!Navigation.newsClicked) {
                             item.setChecked(true);
-                            Intent intent = new Intent(NewsActivity.this, BaseActivity.class);
+                            intent = new Intent(NewsActivity.this, BaseActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_FORWARD_RESULT);
+                            code =2;
                             intent.putExtra("frag", "news");
                             startActivity(intent);
                             return true;
@@ -130,15 +136,20 @@ public class NewsActivity extends BaseContext {
                     case R.id.service_part:
                         if(!Navigation.serviceClicked) {
                             item.setChecked(true);
-                            Intent intent = new Intent(NewsActivity.this, BaseActivity.class);
+                            intent = new Intent(NewsActivity.this, BaseActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_FORWARD_RESULT);
+                            code=3;
                             intent.putExtra("frag", "service");
                             startActivity(intent);
                         }
+
                         break;
                     case R.id.home_part:
                         if(!Navigation.homeClicked) {
                             item.setChecked(true);
-                            Intent intent = new Intent(NewsActivity.this, BaseActivity.class);
+                            intent = new Intent(NewsActivity.this, BaseActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_FORWARD_RESULT);
+                            code=4;
                             intent.putExtra("frag", "home");
                             startActivity(intent);
                         }

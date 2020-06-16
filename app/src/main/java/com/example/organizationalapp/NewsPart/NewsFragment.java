@@ -20,6 +20,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 
 import com.duolingo.open.rtlviewpager.RtlViewPager;
+import com.example.organizationalapp.BaseActivity;
 import com.example.organizationalapp.Navigation;
 import com.example.organizationalapp.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -50,7 +51,6 @@ public class NewsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         view = inflater.inflate(R.layout.activity_second_page, container, false);
         findView();
         setToolBar();

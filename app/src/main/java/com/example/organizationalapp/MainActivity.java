@@ -9,6 +9,7 @@ import android.view.View;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.organizationalapp.ForntPart.BaseContext;
+import com.example.organizationalapp.NewsPart.NewsActivity;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 public class MainActivity extends BaseContext {
@@ -32,9 +33,8 @@ public class MainActivity extends BaseContext {
 
                 if (checkNotEmpty(uname, upass)) {
                     Intent intent = new Intent(MainActivity.this, BaseActivity.class);
-                    intent.putExtra("code", 12);
                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    User.name=uname;
+                    NewsActivity.code=5;                  User.name=uname;
                    // Bundle bundle = new Bundle();
                     //bundle.putString("name", uname);
                     startActivity(intent);

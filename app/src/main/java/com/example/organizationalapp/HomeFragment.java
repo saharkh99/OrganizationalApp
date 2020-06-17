@@ -29,11 +29,7 @@ public class HomeFragment extends Fragment {
     View view;
     FragmentActivity fragmentActivity;
     MaterialButton news, service;
-    NavigationView navigationView;
     static TextView welcome;
-    Navigation nv;
-    DrawerLayout drawerLayout;
-
     public static HomeFragment newInstance() {
         HomeFragment fragment = new HomeFragment();
         return fragment;
@@ -55,18 +51,11 @@ public class HomeFragment extends Fragment {
 
         findView();
         welcome.setText(User.getName() + "   عزیز" + "\n" + "به برنامه جامع خوش آمدید");
-        setToolBar();
-        nv = new Navigation();
-        setNavigation();
-        drawerLayout = view.findViewById(R.id.drawer);
-        drawerLayout.setScrimColor(getResources().getColor(android.R.color.transparent));
-
-
         news.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 BaseActivity.navigation.setSelectedItemId(R.id.news_part);
-                nv.changingNewsFragment(fragmentActivity);
+               // nv.changingNewsFragment(fragmentActivity);
 
             }
         });
@@ -74,7 +63,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 BaseActivity.navigation.setSelectedItemId(R.id.service_part);
-                nv.changingServiceFragment(fragmentActivity);
+             //   nv.changingServiceFragment(fragmentActivity);
             }
         });
 
@@ -85,26 +74,7 @@ public class HomeFragment extends Fragment {
         news = view.findViewById(R.id.news_btn);
         service = view.findViewById(R.id.service_btn);
         welcome = view.findViewById(R.id.welcome);
-        navigationView = view.findViewById(R.id.navigation_view);
-    }
-
-    public void setToolBar() {
-        Toolbar toolbars = view.findViewById(R.id.toolbar);
-        DrawerLayout drawerLayout = view.findViewById(R.id.drawer);
-        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbars);
-
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(false);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(getActivity(), drawerLayout, toolbars, 0, 0);
-        drawerLayout.addDrawerListener(drawerToggle);
-        drawerToggle.syncState();
-        toolbars.setNavigationIcon(R.drawable.menu);
-    }
-
-    private void setNavigation() {
-        nv.setNavigation(navigationView, fragmentActivity);
-    }
+     }
 
     @Override
     public void onPause() {

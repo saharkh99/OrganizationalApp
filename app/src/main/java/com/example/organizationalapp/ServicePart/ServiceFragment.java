@@ -28,9 +28,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ServiceFragment extends Fragment {
-    NavigationView navigationView;
-    Navigation nv;
-    DrawerLayout drawerLayout;
     FragmentActivity fragmentActivity;
     boolean booltrans;
     View view;
@@ -45,9 +42,6 @@ public class ServiceFragment extends Fragment {
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.activity_service, container, false);
         findView();
-        setToolBar();
-        nv = new Navigation();
-        setNavigation();
         RecyclerView recyclerView = view.findViewById(R.id.recycle1);
         ServiceAdapter serviceAdapter = new ServiceAdapter(getActivity(), DataRecieveForService.getService(getActivity()));
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false));
@@ -64,8 +58,6 @@ public class ServiceFragment extends Fragment {
         ServiceAdapter serviceAdapter3 = new ServiceAdapter(getActivity(), DataRecieveForService.getService(getActivity()));
         recyclerView3.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false));
         recyclerView3.setAdapter(serviceAdapter3);
-        drawerLayout = view.findViewById(R.id.drawer);
-        drawerLayout.setScrimColor(getResources().getColor(android.R.color.transparent));
         return view;
     }
 
@@ -76,27 +68,9 @@ public class ServiceFragment extends Fragment {
     }
 
     public void findView() {
-        navigationView = view.findViewById(R.id.navigation_view);
     }
 
-    public void setToolBar() {
-        Toolbar toolbars = view.findViewById(R.id.toolbar);
-        DrawerLayout drawerLayout = view.findViewById(R.id.drawer);
-        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbars);
 
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(false);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(getActivity(), drawerLayout, toolbars, 0, 0);
-        drawerLayout.addDrawerListener(drawerToggle);
-        drawerToggle.syncState();
-        toolbars.setNavigationIcon(R.drawable.menu);
-    }
-
-    private void setNavigation() {
-        nv.setNavigation(navigationView, fragmentActivity);
-
-    }
 
     @Override
     public void onResume() {

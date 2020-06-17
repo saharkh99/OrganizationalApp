@@ -5,50 +5,15 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/drawer"
+    android:id="@+id/drawer1"
     android:layoutDirection="rtl">
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="vertical"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/linear_contain"
         android:layout_height="match_parent">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:title="@string/full"
-            app:titleTextAppearance="@style/Toolbar.TitleText"
-            app:contentInsetStartWithNavigation="0dp"
-            android:background="@color/colorPrimary"
-            android:elevation="20dp">
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-            <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:paddingRight="10dp"
-                android:layout_gravity="right"
-                android:id="@+id/logo"
-                android:paddingLeft="10dp"
-                android:background="@drawable/logowhitech"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="برنامه جامع"
-                android:layout_marginRight="5dp"
-                android:layout_toLeftOf="@id/logo"
-                android:textSize="16dp"
-                android:textColor="@color/colorPrimaryDark"
-                android:padding="15dp"
-                />
-            </RelativeLayout>
-        </androidx.appcompat.widget.Toolbar>
-
-
-
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -142,36 +107,4 @@
 
 
     </LinearLayout>
-
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/navigation_view"
-        android:layout_width="250dp"
-        app:itemIconTint="@drawable/selector2"
-        app:headerLayout="@layout/navigation_header"
-        android:layout_height="match_parent"
-        app:itemTextAppearance="@style/TextAppearance.AppCompat.Menu"
-        android:layout_marginTop="?attr/actionBarSize"
-        android:layout_gravity="start"
-        app:menu="@menu/start_navigation">
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="vertical"
-            android:layout_margin="20dp"
-            android:layout_gravity="bottom">
-            <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:src="@drawable/irisa"/>
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="wrap_content"
-                android:padding="6dp"
-                android:textSize="12dp"
-                android:layout_height="wrap_content"
-                android:text="طراحی و پیاده سازی توسط شرکت ایریسا"/>
-
-        </LinearLayout>
-    </com.google.android.material.navigation.NavigationView>
-
 </androidx.drawerlayout.widget.DrawerLayout>

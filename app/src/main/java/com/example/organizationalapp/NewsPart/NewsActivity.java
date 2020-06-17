@@ -50,8 +50,8 @@ public class NewsActivity extends BaseContext {
         inint();
         setToolBar();
         nv=new Navigation();
-        setNavigation();
         setButtomNavigation(navigation);
+        setNavigation(navigationView);
         drawerLayout.setScrimColor(getResources().getColor(android.R.color.transparent));
 
     }
@@ -83,10 +83,7 @@ public class NewsActivity extends BaseContext {
         des=intent.getStringExtra("des");
         img=intent.getIntExtra("img", 0);
     }
-    private void setNavigation() {
-        nv.setNavigation(navigationView, this);
 
-    }
     public void setToolBar() {
         Toolbar toolbars = findViewById(R.id.toolbar);
         setSupportActionBar(toolbars);
@@ -114,6 +111,7 @@ public class NewsActivity extends BaseContext {
             }
         });
     }
+
     public void setButtomNavigation(BottomNavigationView navigation) {
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             Fragment fragment;
@@ -160,5 +158,45 @@ public class NewsActivity extends BaseContext {
             }
         });
     }
-
+    public void setNavigation(NavigationView navigation) {
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.news_part:
+                        if(!Navigation.newsClicked) {
+                            item.setChecked(true);
+                            intent = new Intent(NewsActivity.this, BaseActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_FORWARD_RESULT);
+                            code =2;
+                            intent.putExtra("frag", "news");
+                            startActivity(intent);
+                            return true;
+                        }                        break;
+                    case R.id.service_part:
+                        if(!Navigation.serviceClicked) {
+                            item.setChecked(true);
+                            intent = new Intent(NewsActivity.this, BaseActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_FORWARD_RESULT);
+                            code=3;
+                            intent.putExtra("frag", "service");
+                            startActivity(intent);
+                        }
+                        break;
+                    case R.id.home_part:
+                        item.setTitle("");
+                        if(!Navigation.homeClicked) {
+                            item.setChecked(true);
+                            intent = new Intent(NewsActivity.this, BaseActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_FORWARD_RESULT);
+                            code=4;
+                            intent.putExtra("frag", "home");
+                            startActivity(intent);
+                        }
+                        break;
+                }
+                return false;
+            }
+        });
+    }
 }

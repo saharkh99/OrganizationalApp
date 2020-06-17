@@ -30,10 +30,7 @@ import com.google.android.material.tabs.TabLayout;
 public class NewsFragment extends Fragment {
 
     View view;
-    NavigationView navigationView;
-    Navigation nv;
     TabLayout tabLayout;
-    DrawerLayout drawerLayout;
     private FragmentActivity fragmentActivity;
 
     public static NewsFragment newInstance() {
@@ -53,10 +50,6 @@ public class NewsFragment extends Fragment {
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.activity_second_page, container, false);
         findView();
-        setToolBar();
-        nv = new Navigation();
-        drawerLayout = view.findViewById(R.id.drawer);
-        drawerLayout.setScrimColor(getResources().getColor(android.R.color.transparent));
         RtlViewPager viewPager = view.findViewById(R.id.viewpager);
 
         ViewPagerNewsAdapt viewPagerNewsAdapt = new ViewPagerNewsAdapt(getChildFragmentManager());
@@ -64,32 +57,15 @@ public class NewsFragment extends Fragment {
         viewPagerNewsAdapt.addFragment(NewsFragmentList.newInstance(), "همه");
         viewPagerNewsAdapt.addFragment(NewsFragmentList.newInstance(), "خبر");
         viewPagerNewsAdapt.addFragment(NewsFragmentList.newInstance(), "اطلاعیه");
-        setNavigation();
         return view;
     }
 
     private void findView() {
-        navigationView = view.findViewById(R.id.navigation_view);
         tabLayout = view.findViewById(R.id.pager_header);
 
 
     }
 
-    public void setToolBar() {
-        Toolbar toolbars = view.findViewById(R.id.toolbar);
-        DrawerLayout drawerLayout = view.findViewById(R.id.drawer);
-        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbars);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(false);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(getActivity(), drawerLayout, toolbars, 0, 0);
-        drawerLayout.addDrawerListener(drawerToggle);
-        drawerToggle.syncState();
-        toolbars.setNavigationIcon(R.drawable.menu);
-    }
 
-    private void setNavigation() {
-        nv.setNavigation(navigationView, fragmentActivity);
-    }
 
 }

@@ -58,7 +58,7 @@ public class BaseActivity extends AppCompatActivity {
             HomeFragment homeFragment = HomeFragment.newInstance();
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction transaction = fragmentManager.beginTransaction();
-            transaction.setCustomAnimations(R.animator.enter_from_right, R.animator.exit_to_left, R.animator.enter_from_right, R.animator.exit_to_left);
+            transaction.setCustomAnimations(R.animator.enter_from_left, R.animator.exit_to_right,R.animator.enter_from_left, R.animator.exit_to_right);
             Navigation.newsClicked = false;
             Navigation.homeClicked = true;
             transaction.add(R.id.fragment_container, homeFragment, "HomeFragment").commit();
@@ -68,7 +68,7 @@ public class BaseActivity extends AppCompatActivity {
                 Fragment fragment = new NewsFragment();
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.setCustomAnimations(R.animator.enter_from_left, R.animator.exit_to_right, R.animator.enter_from_left, R.animator.exit_to_right);
+                transaction.setCustomAnimations(R.animator.enter_from_left, R.animator.exit_to_right, R.animator.enter_from_right, R.animator.exit_to_left);
                 transaction.add(R.id.fragment_container, fragment, "news").commit();
                 Navigation.serviceClicked = false;
                 Navigation.newsClicked = true;
@@ -80,7 +80,7 @@ public class BaseActivity extends AppCompatActivity {
             if (NewsActivity.code == 2) {
                 fragment = new NewsFragment();
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.setCustomAnimations(R.animator.enter_from_left, R.animator.exit_to_right, R.animator.enter_from_left, R.animator.exit_to_right);
+                transaction.setCustomAnimations(R.animator.enter_from_left, R.animator.exit_to_right, R.animator.enter_from_right, R.animator.exit_to_left);
                 transaction.replace(R.id.drawer, fragment);
                 transaction.commit();
                 Navigation.serviceClicked = false;
@@ -93,7 +93,7 @@ public class BaseActivity extends AppCompatActivity {
                 Fragment fragment1 = new ServiceFragment();
                 FragmentManager fragmentManager1 = getSupportFragmentManager();
                 FragmentTransaction transaction1 = fragmentManager1.beginTransaction();
-                transaction1.setCustomAnimations(R.animator.enter_from_right, R.animator.exit_to_left, R.animator.enter_from_right, R.animator.exit_to_left);
+                transaction1.setCustomAnimations(R.animator.enter_from_right, R.animator.exit_to_left, R.animator.enter_from_left, R.animator.exit_to_right);
                 transaction1.add(R.id.fragment_container, fragment1);
                 transaction1.commit();
                 Navigation.serviceClicked = true;
@@ -104,11 +104,11 @@ public class BaseActivity extends AppCompatActivity {
             if (NewsActivity.code == 4) {
                 fragment = new HomeFragment();
                 FragmentTransaction transaction2 = fragmentManager.beginTransaction();
-                if (Navigation.newsClicked) {
-                    transaction2.setCustomAnimations(R.animator.enter_from_right, R.animator.exit_to_left, R.animator.enter_from_right, R.animator.exit_to_left);
-                } else {
-                    transaction2.setCustomAnimations(R.animator.enter_from_left, R.animator.exit_to_right, R.animator.enter_from_left, R.animator.exit_to_right);
-                }
+              //  if (Navigation.newsClicked) {
+              //      transaction2.setCustomAnimations(R.animator.enter_from_right, R.animator.exit_to_left, R.animator.enter_from_left, R.animator.exit_to_right);
+              //  } else {
+                    transaction2.setCustomAnimations(R.animator.enter_from_right, R.animator.exit_to_left, R.animator.enter_from_left, R.animator.exit_to_right);
+              //  }
                 transaction2.add(R.id.fragment_container, fragment);
                 transaction2.commit();
                 Navigation.serviceClicked = false;

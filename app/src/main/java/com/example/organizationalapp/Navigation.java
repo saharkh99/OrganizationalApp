@@ -88,7 +88,7 @@ public class Navigation {
 
             fragment = new NewsFragment();
             FragmentTransaction transaction = fragmentManager.beginTransaction();
-            transaction.setCustomAnimations(R.animator.enter_from_left, R.animator.exit_to_right, R.animator.enter_from_left, R.animator.exit_to_right);
+            transaction.setCustomAnimations(R.animator.enter_from_left, R.animator.exit_to_right, R.animator.enter_from_right, R.animator.exit_to_left);
             transaction.replace(R.id.fragment_container, fragment);
             transaction.commit();
             Navigation.serviceClicked = false;
@@ -104,7 +104,7 @@ public class Navigation {
         if(!Navigation.serviceClicked) {
             fragment = new ServiceFragment();
             FragmentTransaction transaction1 = fragmentManager.beginTransaction();
-            transaction1.setCustomAnimations(R.animator.enter_from_right, R.animator.exit_to_left, R.animator.enter_from_right, R.animator.exit_to_left);
+            transaction1.setCustomAnimations(R.animator.enter_from_right, R.animator.exit_to_left, R.animator.enter_from_left, R.animator.exit_to_right);
             transaction1.replace(R.id.fragment_container, fragment);
             transaction1.commit();
             Navigation.serviceClicked = true;
@@ -119,9 +119,9 @@ public class Navigation {
             fragment = new HomeFragment();
             FragmentTransaction transaction2 = fragmentManager.beginTransaction();
             if (Navigation.newsClicked) {
-                transaction2.setCustomAnimations(R.animator.enter_from_right, R.animator.exit_to_left, R.animator.enter_from_right, R.animator.exit_to_left);
+                transaction2.setCustomAnimations(R.animator.enter_from_right, R.animator.exit_to_left, R.animator.enter_from_left, R.animator.exit_to_right);
             } else {
-                transaction2.setCustomAnimations(R.animator.enter_from_left, R.animator.exit_to_right, R.animator.enter_from_left, R.animator.exit_to_right);
+                transaction2.setCustomAnimations(R.animator.enter_from_left, R.animator.exit_to_right, R.animator.enter_from_right, R.animator.exit_to_left);
             }                            transaction2.replace(R.id.fragment_container, fragment);
             transaction2.commit();
             Navigation.serviceClicked = false;

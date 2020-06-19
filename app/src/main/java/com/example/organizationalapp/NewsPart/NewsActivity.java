@@ -30,14 +30,14 @@ import com.google.android.material.navigation.NavigationView;
 
 public class NewsActivity extends BaseContext {
 
-    TextView titleTV,dateTV,tagTV,desTV;
+    TextView titleTV, dateTV, tagTV, desTV;
     ImageView imgTV;
-    String title,date,tag,des;
+    String title, date, tag, des;
     int img;
     BottomNavigationView navigation;
     NavigationView navigationView;
     Navigation nv;
-     public static int code=0;
+    public static int code = 0;
     DrawerLayout drawerLayout;
     Intent intent;
 
@@ -49,7 +49,7 @@ public class NewsActivity extends BaseContext {
         findView();
         inint();
         setToolBar();
-        nv=new Navigation();
+        nv = new Navigation();
         setButtomNavigation(navigation);
         setNavigation(navigationView);
         drawerLayout.setScrimColor(getResources().getColor(android.R.color.transparent));
@@ -65,23 +65,23 @@ public class NewsActivity extends BaseContext {
     }
 
     private void findView() {
-        titleTV=findViewById(R.id.title_news);
-        tagTV=findViewById(R.id.tag_news);
-        desTV=findViewById(R.id.description_news);
-        dateTV=findViewById(R.id.date_news);
-        imgTV=findViewById(R.id.img_news);
+        titleTV = findViewById(R.id.title_news);
+        tagTV = findViewById(R.id.tag_news);
+        desTV = findViewById(R.id.description_news);
+        dateTV = findViewById(R.id.date_news);
+        imgTV = findViewById(R.id.img_news);
         navigation = findViewById(R.id.navigation);
         navigationView = findViewById(R.id.navigation_view);
-        drawerLayout=findViewById(R.id.drawer);
+        drawerLayout = findViewById(R.id.drawer);
     }
 
     private void getData() {
         Intent intent = getIntent();
-        title=intent.getStringExtra("title");
-        date=intent.getStringExtra("date");
-        tag=intent.getStringExtra("tag");
-        des=intent.getStringExtra("des");
-        img=intent.getIntExtra("img", 0);
+        title = intent.getStringExtra("title");
+        date = intent.getStringExtra("date");
+        tag = intent.getStringExtra("tag");
+        des = intent.getStringExtra("des");
+        img = intent.getIntExtra("img", 0);
     }
 
     public void setToolBar() {
@@ -99,12 +99,12 @@ public class NewsActivity extends BaseContext {
         drawerLayout.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
         toolbars.setNavigationIcon(R.drawable.menu);
-        ImageView back=findViewById(R.id.back);
+        ImageView back = findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                code=1;
-                intent=new Intent(NewsActivity.this, BaseActivity.class);
+                code = 1;
+                intent = new Intent(NewsActivity.this, BaseActivity.class);
                 intent.addFlags(Intent.FLAG_FROM_BACKGROUND);
                 intent.putExtra("fra", "x");
                 startActivity(intent);
@@ -114,87 +114,67 @@ public class NewsActivity extends BaseContext {
 
     public void setButtomNavigation(BottomNavigationView navigation) {
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            Fragment fragment;
-            FragmentManager fragmentManager=getSupportFragmentManager();
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                intent = new Intent(NewsActivity.this, BaseActivity.class);
+                overridePendingTransition(R.animator.enter_from_right, R.animator.exit_to_left);
                 switch (item.getItemId()) {
                     case R.id.news_part:
-                        if(!Navigation.newsClicked) {
+                        if (!Navigation.newsClicked) {
                             item.setChecked(true);
-                            intent = new Intent(NewsActivity.this, BaseActivity.class);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_FORWARD_RESULT);
-                            code =2;
-                            intent.putExtra("frag", "news");
-                            startActivity(intent);
+                            code = 2;
                             return true;
                         }
                         break;
                     case R.id.service_part:
-                        if(!Navigation.serviceClicked) {
+                        if (!Navigation.serviceClicked) {
                             item.setChecked(true);
-                            intent = new Intent(NewsActivity.this, BaseActivity.class);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_FORWARD_RESULT);
-                            code=3;
-                            intent.putExtra("frag", "service");
-                            startActivity(intent);
+                            code = 3;
                         }
 
                         break;
                     case R.id.home_part:
-                        if(!Navigation.homeClicked) {
+                        if (!Navigation.homeClicked) {
                             item.setChecked(true);
-                            intent = new Intent(NewsActivity.this, BaseActivity.class);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_FORWARD_RESULT);
-                            code=4;
-                            intent.putExtra("frag", "home");
-                            startActivity(intent);
+                            code = 4;
                         }
 
                         break;
                 }
+                startActivity(intent);
                 return false;
             }
         });
     }
+
     public void setNavigation(NavigationView navigation) {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                intent = new Intent(NewsActivity.this, BaseActivity.class);
                 switch (item.getItemId()) {
                     case R.id.news_part:
-                        if(!Navigation.newsClicked) {
+                        if (!Navigation.newsClicked) {
                             item.setChecked(true);
-                            intent = new Intent(NewsActivity.this, BaseActivity.class);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_FORWARD_RESULT);
-                            code =2;
-                            intent.putExtra("frag", "news");
-                            startActivity(intent);
-                            return true;
-                        }                        break;
+                            code = 2;
+                        }
+                        break;
                     case R.id.service_part:
-                        if(!Navigation.serviceClicked) {
+                        if (!Navigation.serviceClicked) {
                             item.setChecked(true);
-                            intent = new Intent(NewsActivity.this, BaseActivity.class);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_FORWARD_RESULT);
-                            code=3;
-                            intent.putExtra("frag", "service");
-                            startActivity(intent);
+                            code = 3;
                         }
                         break;
                     case R.id.home_part:
                         item.setTitle("");
-                        if(!Navigation.homeClicked) {
+                        if (!Navigation.homeClicked) {
                             item.setChecked(true);
-                            intent = new Intent(NewsActivity.this, BaseActivity.class);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_FORWARD_RESULT);
-                            code=4;
-                            intent.putExtra("frag", "home");
-                            startActivity(intent);
+                            code = 4;
                         }
                         break;
                 }
+                startActivity(intent);
                 return false;
             }
         });

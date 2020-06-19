@@ -1,30 +1,15 @@
 package com.example.organizationalapp.NewsPart;
-
 import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.widget.TextView;
-
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
-
 import com.duolingo.open.rtlviewpager.RtlViewPager;
-import com.example.organizationalapp.BaseActivity;
-import com.example.organizationalapp.Navigation;
 import com.example.organizationalapp.R;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 
 public class NewsFragment extends Fragment {

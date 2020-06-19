@@ -6,30 +6,16 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.organizationalapp.Navigation;
 import com.example.organizationalapp.R;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationView;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class ServiceFragment extends Fragment {
     FragmentActivity fragmentActivity;
-    boolean booltrans;
     View view;
 
     public static ServiceFragment newInstance() {
@@ -41,7 +27,6 @@ public class ServiceFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.activity_service, container, false);
-        findView();
         RecyclerView recyclerView = view.findViewById(R.id.recycle1);
         ServiceAdapter serviceAdapter = new ServiceAdapter(getActivity(), DataRecieveForService.getService(getActivity()));
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false));
@@ -66,11 +51,6 @@ public class ServiceFragment extends Fragment {
         fragmentActivity = (FragmentActivity) activity;
         super.onAttach(activity);
     }
-
-    public void findView() {
-    }
-
-
 
     @Override
     public void onResume() {

@@ -33,10 +33,10 @@ public class MainActivity extends BaseContext {
 
                 if (checkNotEmpty(uname, upass)) {
                     Intent intent = new Intent(MainActivity.this, BaseActivity.class);
+                    overridePendingTransition(R.animator.enter_from_left, R.animator.exit_to_right);
                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    NewsActivity.code=5;                  User.name=uname;
-                   // Bundle bundle = new Bundle();
-                    //bundle.putString("name", uname);
+                    NewsActivity.code=5;
+                    User.name=uname;
                     startActivity(intent);
                 }
             }

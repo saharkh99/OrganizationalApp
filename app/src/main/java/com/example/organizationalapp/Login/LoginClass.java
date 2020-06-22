@@ -34,11 +34,7 @@ public class LoginClass {
 
                     @Override
                     public void onResponse(Call<String> call, Response<String> response) {
-//                        Dialog dialog = new Dialog(context);
-//                        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-//                        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//                        dialog.setContentView(R.layout.dialog);
-//                        dialog.show();
+
                           progressBar.setVisibility(View.GONE);
                         Log.d("response", response.toString());
                         if (response.isSuccessful()) {
@@ -49,7 +45,6 @@ public class LoginClass {
                                 }
                                 String responseBody = response.body();
                                 if (responseBody.equals("true")) {
-                                  //  dialog.dismiss();
                                     Intent intent = new Intent(context, BaseActivity.class);
                                     //overridePendingTransition(R.animator.enter_from_left, R.animator.exit_to_right);
                                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -58,18 +53,18 @@ public class LoginClass {
                                     context.startActivity(intent);
                                 } else {
 //                                    dialog.dismiss();
-//                                    Dialog dialog1 = new Dialog(context);
-//                                    dialog1.requestWindowFeature(Window.FEATURE_NO_TITLE);
-//                                    dialog1.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//                                    dialog1.setContentView(R.layout.dialog_information);
-//                                    TextView ok = dialog1.findViewById(R.id.btn_ok);
-//                                    ok.setOnClickListener(new View.OnClickListener() {
-//                                        @Override
-//                                        public void onClick(View view) {
-//                                            dialog1.dismiss();
-//                                        }
-//                                    });
-//                                    dialog1.show();
+                                    Dialog dialog1 = new Dialog(context);
+                                    dialog1.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                                    dialog1.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                                    dialog1.setContentView(R.layout.dialog_layout);
+                                    TextView ok = dialog1.findViewById(R.id.btn_ok);
+                                    ok.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View view) {
+                                            dialog1.dismiss();
+                                        }
+                                    });
+                                    dialog1.show();
 //                                    code = responseBody;
 //                                    Log.d("incorrect password", "correct");
                                 }

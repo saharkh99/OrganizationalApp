@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center"
+    app:cardElevation="5dp"
+    app:cardCornerRadius="5dp"
+    android:background="@color/colorPrimaryDark"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:orientation="vertical" android:layout_width="wrap_content"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:elevation="5dp"
+        android:background="@color/colorPrimaryDark"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:background="@drawable/warning"
+            android:backgroundTint="@color/colorPrimary"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="اطلاعات را به درستی وارد کنید"
+            android:textSize="18dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/textColor"
+            android:textStyle="bold"
+            android:padding="15dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="تایید"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:padding="5dp"
+            android:layout_gravity="right"
+            android:textColor="@color/colorPrimary"
+            android:layout_margin="15dp"
+            android:clickable="true"
+            android:id="@+id/btn_ok"
+            android:background="@color/colorPrimaryDark"
+            />
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

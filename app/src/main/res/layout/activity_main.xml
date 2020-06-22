@@ -132,4 +132,11 @@
                 android:src="@drawable/irisa" />
         </LinearLayout>
     </LinearLayout>
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/progressbar"
+        android:layout_gravity="center"
+        android:id="@+id/progress_circular"
+        android:visibility="gone"/>
 </FrameLayout>

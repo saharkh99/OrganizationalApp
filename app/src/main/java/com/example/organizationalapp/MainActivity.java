@@ -5,10 +5,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ProgressBar;
 
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.organizationalapp.ForntPart.BaseContext;
+import com.example.organizationalapp.Login.LoginClass;
 import com.example.organizationalapp.NewsPart.NewsActivity;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
@@ -32,12 +34,15 @@ public class MainActivity extends BaseContext {
                 String upass = password.getText().toString().trim();
 
                 if (checkNotEmpty(uname, upass)) {
-                    Intent intent = new Intent(MainActivity.this, BaseActivity.class);
-                    overridePendingTransition(R.animator.enter_from_left, R.animator.exit_to_right);
-                   intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    NewsActivity.code=5;
-                    User.name=uname;
-                    startActivity(intent);
+                  //  Intent intent = new Intent(MainActivity.this, BaseActivity.class);
+//                    overridePendingTransition(R.animator.enter_from_left, R.animator.exit_to_right);
+//                   intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                    NewsActivity.code=5;
+//                    User.name=uname;
+//                    startActivity(intent);
+                    ProgressBar progressBar=findViewById(R.id.progress_circular);
+                    progressBar.setVisibility(View.VISIBLE);
+                    LoginClass.requestLogin(uname, upass, MainActivity.this, progressBar);
                 }
             }
         });

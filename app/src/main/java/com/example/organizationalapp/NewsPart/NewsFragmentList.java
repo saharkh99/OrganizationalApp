@@ -78,18 +78,11 @@ public class NewsFragmentList extends Fragment {
         }
     }
     public  class processInBackgRound extends AsyncTask<Integer,Void,List<News>>{
-       // ProgressDialog progressDialog=new ProgressDialog(NewsActivity.class);
-       //ProgressDialog progressDialog;
         @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
             progressBar.setVisibility(View.VISIBLE);
-           // progressDialog = new ProgressDialog(getActivity(),R.style.CustomAlertDialogStyle);
-          //  progressDialog.set
-          //  progressDialog.setProgressDrawable(getActivity().getDrawable(R.drawable.progressbar));
-         //   progressDialog.setCancelable(false);
-         //  progressDialog.show();
         }
 
         @RequiresApi(api = Build.VERSION_CODES.O)

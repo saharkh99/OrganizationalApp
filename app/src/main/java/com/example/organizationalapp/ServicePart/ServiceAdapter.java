@@ -29,7 +29,6 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ServiceV
 
     @Override
     public void onBindViewHolder(@NonNull ServiceViewHolder holder, int position) {
-
         Services service = services.get(position);
         holder.serviceName.setText(service.getName());
         holder.img.setImageResource(service.getImg());

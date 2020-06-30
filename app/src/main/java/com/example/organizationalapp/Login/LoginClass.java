@@ -15,6 +15,7 @@ import com.example.organizationalapp.BaseActivity;
 import com.example.organizationalapp.MainActivity;
 import com.example.organizationalapp.NewsPart.NewsActivity;
 import com.example.organizationalapp.R;
+import com.example.organizationalapp.Token;
 import com.example.organizationalapp.User;
 
 import retrofit2.Call;
@@ -44,7 +45,9 @@ public class LoginClass {
                                     Log.v("Error code 400", response.errorBody().string());
                                 }
                                 String responseBody = response.body();
-                                if (responseBody.equals("true")) {
+                                if (!responseBody.equals("false")) {
+                                    Log.d("token", responseBody.toString());
+                                    Token.setToken(responseBody);
                                     Intent intent = new Intent(context, BaseActivity.class);
                                     //overridePendingTransition(R.animator.enter_from_left, R.animator.exit_to_right);
                                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

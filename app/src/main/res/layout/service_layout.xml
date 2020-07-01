@@ -6,21 +6,24 @@
     card-view:cardCornerRadius="5dp"
     card-view:cardElevation="5dp"
     android:layout_margin="10dp"
-    android:layout_height="wrap_content">
+    android:layout_height="100dp">
 <LinearLayout
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
+    android:layout_margin="5dp"
     android:orientation="vertical">
 <ImageView
     android:layout_width="50dp"
     android:layout_height="50dp"
     android:id="@+id/img_service"
     android:layout_gravity="center"
+    android:layout_marginTop="5dp"
     android:src="@drawable/logogreensr"/>
     <TextView
         android:layout_gravity="center"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
+        android:gravity="center"
         android:layout_height="wrap_content"
         android:textColor="@color/textColor"
         android:id="@+id/name_service"

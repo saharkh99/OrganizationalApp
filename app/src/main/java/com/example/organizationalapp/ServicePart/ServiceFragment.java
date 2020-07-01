@@ -25,7 +25,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ServiceFragment extends Fragment {
-    static List<Services>nList;
+    static List<Services>nList,nlist1,nlist2,nlist3;
     FragmentActivity fragmentActivity;
     View view;
     static RecyclerView recyclerView,recyclerView3,recyclerView2;
@@ -79,16 +79,37 @@ public class ServiceFragment extends Fragment {
                     @Override
                     public void onResponse(Call< List < Services >> call, Response< List < Services >> response){
                         nList=new ArrayList<>();
+                        nlist1=new ArrayList<>();
+                        nlist2=new ArrayList<>();
+                        nlist3=new ArrayList<>();
+
                         if (response.isSuccessful()) {
                             Log.d("service", response.body().toString());
                             nList=response.body();
-                            ServiceAdapter serviceAdapter = new ServiceAdapter(activity, nList);
+                            for(int i=0;i<nList.size();i++){
+                                if(nList.get(i).getParent().equals("general")){
+                                    nList.get(i).setImg(R.drawable.general);
+                                    nlist1.add(nList.get(i));
+                                }
+                                else if(nList.get(i).getParent().equals("entpart")){
+                                    nList.get(i).setImg(R.drawable.entertainment);
+                                    nlist2.add(nList.get(i));
+
+                                }
+                                else{
+                                    nList.get(i).setImg(R.drawable.special);
+                                    nlist3.add(nList.get(i));
+
+                                }
+
+                            }
+                            ServiceAdapter serviceAdapter = new ServiceAdapter(activity, nlist1);
                             recyclerView.setLayoutManager(new LinearLayoutManager(activity, RecyclerView.HORIZONTAL, false));
                             recyclerView.setAdapter(serviceAdapter);
-                            ServiceAdapter serviceAdapter1 = new ServiceAdapter(activity, nList);
+                            ServiceAdapter serviceAdapter1 = new ServiceAdapter(activity, nlist3);
                             recyclerView2.setLayoutManager(new LinearLayoutManager(activity, RecyclerView.HORIZONTAL, false));
                             recyclerView2.setAdapter(serviceAdapter1);
-                            ServiceAdapter serviceAdapter2 = new ServiceAdapter(activity, nList);
+                            ServiceAdapter serviceAdapter2 = new ServiceAdapter(activity, nlist2);
                             recyclerView3.setLayoutManager(new LinearLayoutManager(activity, RecyclerView.HORIZONTAL, false));
                             recyclerView3.setAdapter(serviceAdapter2);
                         }

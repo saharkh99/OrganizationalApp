@@ -1,5 +1,6 @@
 package com.example.organizationalapp.Login;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -11,6 +12,8 @@ import android.view.Window;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.auth0.android.jwt.Claim;
+import com.auth0.android.jwt.JWT;
 import com.example.organizationalapp.BaseActivity;
 import com.example.organizationalapp.MainActivity;
 import com.example.organizationalapp.NewsPart.NewsActivity;
@@ -23,7 +26,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LoginClass {
-    static String code = "wrong";
+    static String code ;
 
     // Context mContext;
     public static String requestLogin(String username, String passwords, Context context, ProgressBar progressBar) {
@@ -48,8 +51,13 @@ public class LoginClass {
                                 if (!responseBody.equals("false")) {
                                     Log.d("token", responseBody.toString());
                                     Token.setToken(responseBody);
+                                    JWT parsedJWT = new JWT(Token.getToken());
+                                    Claim subscriptionMetaData = parsedJWT.getClaim("roles");
+                                    String parsedValue = subscriptionMetaData.asString();
+                                    User.setRole(parsedValue);
+                                    Log.d("role",parsedValue);
                                     Intent intent = new Intent(context, BaseActivity.class);
-                                    //overridePendingTransition(R.animator.enter_from_left, R.animator.exit_to_right);
+                                  //  context.overridePendingTransition(R.animator.enter_from_left, R.animator.exit_to_right);
                                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                     NewsActivity.code=5;
                                     User.name=username;
@@ -74,7 +82,6 @@ public class LoginClass {
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
-
 
                         }
                     }

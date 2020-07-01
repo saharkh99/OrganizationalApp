@@ -49,10 +49,12 @@ public class Navigation {
         View v = navigationView.getHeaderView(0);
         TextView name = v.findViewById(R.id.name);
         TextView intro = v.findViewById(R.id.intro);
+        TextView role=v.findViewById(R.id.role);
         String namestr = User.getName().trim();
         String s = String.valueOf(namestr.charAt(0));
         name.setText(namestr);
         intro.setText(s);
+        role.setText(User.getRole());
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override

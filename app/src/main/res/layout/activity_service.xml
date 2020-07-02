@@ -50,6 +50,8 @@
         android:textSize="14dp"
         android:padding="5dp"
         android:textStyle="bold"
+        android:id="@+id/general"
+        android:visibility="gone"
         android:textColor="@color/textColor"
         android:layout_gravity="right"
         android:text="@string/string_general"/>
@@ -57,6 +59,8 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_margin="2dp"
+        android:visibility="gone"
+        android:id="@+id/line1"
         android:background="@color/textColor"/>
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
@@ -75,12 +79,16 @@
         android:textSize="14dp"
         android:padding="5dp"
         android:textStyle="bold"
+        android:id="@+id/management"
+        android:visibility="gone"
         android:textColor="@color/textColor"
         android:layout_gravity="right"
         android:text="@string/string_managment"/>
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
+        android:id="@+id/line2"
+        android:visibility="gone"
         android:layout_margin="2dp"
         android:background="@color/textColor"/>
 
@@ -95,13 +103,17 @@
         android:textSize="14dp"
         android:padding="5dp"
         android:textStyle="bold"
+        android:id="@+id/ent"
+        android:visibility="gone"
         android:textColor="@color/textColor"
         android:layout_gravity="right"
         android:text="@string/string_intertainment"/>
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
+        android:visibility="gone"
         android:layout_margin="2dp"
+        android:id="@+id/line3"
         android:background="@color/textColor"/>
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"

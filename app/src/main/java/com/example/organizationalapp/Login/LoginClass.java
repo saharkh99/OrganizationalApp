@@ -26,9 +26,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LoginClass {
-    static String code ;
+    static String code;
 
-    // Context mContext;
     public static String requestLogin(String username, String passwords, Context context, ProgressBar progressBar) {
         BAseApiService mApiService;
         progressBar.setVisibility(View.VISIBLE);
@@ -39,7 +38,7 @@ public class LoginClass {
                     @Override
                     public void onResponse(Call<String> call, Response<String> response) {
 
-                          progressBar.setVisibility(View.GONE);
+                        progressBar.setVisibility(View.GONE);
                         Log.d("response", response.toString());
                         if (response.isSuccessful()) {
                             Log.d("suceess", "success");
@@ -51,19 +50,13 @@ public class LoginClass {
                                 if (!responseBody.equals("false")) {
                                     Log.d("token", responseBody.toString());
                                     Token.setToken(responseBody);
-                                    JWT parsedJWT = new JWT(Token.getToken());
-                                    Claim subscriptionMetaData = parsedJWT.getClaim("roles");
-                                    String parsedValue = subscriptionMetaData.asString();
-                                    User.setRole(parsedValue);
-                                    Log.d("role",parsedValue);
+                                    getClaim();
+
                                     Intent intent = new Intent(context, BaseActivity.class);
-                                  //  context.overridePendingTransition(R.animator.enter_from_left, R.animator.exit_to_right);
                                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                    NewsActivity.code=5;
-                                    User.name=username;
+                                    NewsActivity.code = 5;
                                     context.startActivity(intent);
                                 } else {
-//                                    dialog.dismiss();
                                     Dialog dialog1 = new Dialog(context);
                                     dialog1.requestWindowFeature(Window.FEATURE_NO_TITLE);
                                     dialog1.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -76,8 +69,6 @@ public class LoginClass {
                                         }
                                     });
                                     dialog1.show();
-//                                    code = responseBody;
-//                                    Log.d("incorrect password", "correct");
                                 }
                             } catch (Exception e) {
                                 e.printStackTrace();
@@ -95,5 +86,16 @@ public class LoginClass {
                 });
         return code;
 
+    }
+
+    private static void getClaim() {
+        JWT parsedJWT = new JWT(Token.getToken());
+        Claim subscriptionMetaData = parsedJWT.getClaim("role");
+        Claim subscriptionMetaData2 = parsedJWT.getClaim("unique_name");
+        String parsedValue = subscriptionMetaData.asString();
+        String parsedValue2 = subscriptionMetaData2.asString();
+        User.setRole(parsedValue);
+        User.setName(parsedValue2);
+        Log.d("role", parsedValue.toString());
     }
 }

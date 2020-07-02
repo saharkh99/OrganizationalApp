@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
@@ -34,6 +35,8 @@ public class ServiceFragment extends Fragment {
     View view;
     static ProgressBar progressBar;
     static RecyclerView recyclerView,recyclerView3,recyclerView2;
+    static TextView management,entertainment,general;
+    static View line1,line2,line3;
 
     public static ServiceFragment newInstance() {
         ServiceFragment fragment = new ServiceFragment();
@@ -44,13 +47,24 @@ public class ServiceFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.activity_service, container, false);
-        recyclerView = view.findViewById(R.id.recycle1);
-        recyclerView2 = view.findViewById(R.id.recycle2);
-        recyclerView3 = view.findViewById(R.id.recycle3);
-        progressBar=view.findViewById(R.id.progress_circular);
+        findView(view);
+
         progressBar.setVisibility(View.VISIBLE);
         getService(getActivity());
         return view;
+    }
+
+    private void findView(View view) {
+        recyclerView = view.findViewById(R.id.recycle1);
+        recyclerView2 = view.findViewById(R.id.recycle2);
+        recyclerView3 = view.findViewById(R.id.recycle3);
+        management=view.findViewById(R.id.management);
+        entertainment=view.findViewById(R.id.ent);
+        general=view.findViewById(R.id.general);
+        line1=view.findViewById(R.id.line1);
+        line2=view.findViewById(R.id.line2);
+        line3=view.findViewById(R.id.line3);
+        progressBar=view.findViewById(R.id.progress_circular);
     }
 
     @Override
@@ -80,7 +94,10 @@ public class ServiceFragment extends Fragment {
                             progressBar.setVisibility(View.GONE);
                             Log.d("service", response.body().toString());
                             nList=response.body();
+                            setVisible();
+
                             Random rnd = new Random();
+
                             for(int i=0;i<nList.size();i++){
                                 if(nList.get(i).getParent().equals("general")){
                                     nList.get(i).setImg(R.drawable.general);
@@ -129,6 +146,14 @@ public class ServiceFragment extends Fragment {
 
     }
 
+    private static void setVisible() {
+        management.setVisibility(View.VISIBLE);
+        entertainment.setVisibility(View.VISIBLE);
+        general.setVisibility(View.VISIBLE);
+        line1.setVisibility(View.VISIBLE);
+        line2.setVisibility(View.VISIBLE);
+        line3.setVisibility(View.VISIBLE);
+    }
 
 
 }

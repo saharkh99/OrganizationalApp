@@ -37,6 +37,7 @@ public class ServiceFragment extends Fragment {
     static RecyclerView recyclerView,recyclerView3,recyclerView2;
     static TextView management,entertainment,general;
     static View line1,line2,line3;
+    static String colors[] = {"#ff438a5e", "#ff7bc0a3", "#ffc1f880", "#ff9bdeac", "#ff75a8d3", "#ff3e8057", "#ff99b898", "#ffcbecc9", "#ff6daa92", "#ff578581"};
 
     public static ServiceFragment newInstance() {
         ServiceFragment fragment = new ServiceFragment();
@@ -89,7 +90,7 @@ public class ServiceFragment extends Fragment {
                         nlist1=new ArrayList<>();
                         nlist2=new ArrayList<>();
                         nlist3=new ArrayList<>();
-
+                        int j = 0;
                         if (response.isSuccessful()) {
                             progressBar.setVisibility(View.GONE);
                             Log.d("service", response.body().toString());
@@ -99,24 +100,25 @@ public class ServiceFragment extends Fragment {
                             Random rnd = new Random();
 
                             for(int i=0;i<nList.size();i++){
-                                if(nList.get(i).getParent().equals("general")){
+                                if(nList.get(i).getParent().equals("general")) {
                                     nList.get(i).setImg(R.drawable.general);
                                     int color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
-                                    nList.get(i).setColor(color);
+                                    nList.get(i).setColor(Color.parseColor(colors[(j++) % 10]));
+                                    Log.d("color", Integer.toString(Color.parseColor("#ffe0dede")));
                                     nlist1.add(nList.get(i));
 
                                 }
                                 else if(nList.get(i).getParent().equals("entpart")){
                                     nList.get(i).setImg(R.drawable.entertainment);
                                     int color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
-                                    nList.get(i).setColor(color);
+                                    nList.get(i).setColor(Color.parseColor(colors[(j++) % 10]));
                                     nlist2.add(nList.get(i));
 
                                 }
                                 else{
                                     nList.get(i).setImg(R.drawable.special);
                                     int color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
-                                    nList.get(i).setColor(color);
+                                    nList.get(i).setColor(Color.parseColor(colors[(j++) % 10]));
                                     nlist3.add(nList.get(i));
 
                                 }

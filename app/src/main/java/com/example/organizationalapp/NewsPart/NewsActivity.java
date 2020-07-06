@@ -25,6 +25,7 @@ import com.example.organizationalapp.HomeFragment;
 import com.example.organizationalapp.Navigation;
 import com.example.organizationalapp.R;
 import com.example.organizationalapp.ServicePart.ServiceFragment;
+import com.example.organizationalapp.User;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
@@ -124,7 +125,6 @@ public class NewsActivity extends BaseContext {
                         if (!Navigation.newsClicked) {
                             item.setChecked(true);
                             code = 2;
-                            return true;
                         }
                         break;
                     case R.id.service_part:
@@ -148,7 +148,16 @@ public class NewsActivity extends BaseContext {
         });
     }
 
-    public void setNavigation(NavigationView navigation) {
+    public void setNavigation(NavigationView navigationView) {
+        View v = navigationView.getHeaderView(0);
+        TextView name = v.findViewById(R.id.name);
+        TextView intro = v.findViewById(R.id.intro);
+        TextView role = v.findViewById(R.id.role);
+        String namestr = User.getName().trim();
+        String s = String.valueOf(namestr.charAt(0));
+        name.setText(namestr);
+        intro.setText(s);
+        role.setText(User.getRole());
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {

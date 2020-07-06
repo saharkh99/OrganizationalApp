@@ -125,7 +125,7 @@ public class NewsFragmentList extends Fragment {
                         news.setTag("خبر");
                         news.setImg(R.drawable.scrum);
                         news.setTitle(title);
-                        news.setDescription(desc);
+                        news.setDescription(desc + "\n");
                         news.setDate("1399,02,29");
                         nList.add(i, news);
                         news.setIdNews(i);

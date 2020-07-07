@@ -14,12 +14,13 @@ import com.example.organizationalapp.Login.LoginClass;
 import com.example.organizationalapp.NewsPart.NewsActivity;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
+
 public class MainActivity extends BaseContext {
 
     TextInputEditText username;
     TextInputEditText password;
     MaterialButton login;
-    FragmentTransaction transaction;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,13 +31,13 @@ public class MainActivity extends BaseContext {
             @Override
             public void onClick(View view) {
                 login.setEnabled(true);
-                String uname = username.getText().toString().trim();
-                String upass = password.getText().toString().trim();
+                String uName = username.getText().toString().trim();
+                String uPass = password.getText().toString().trim();
 
-                if (checkNotEmpty(uname, upass)) {
-                    ProgressBar progressBar=findViewById(R.id.progress_circular);
+                if (checkNotEmpty(uName, uPass)) {
+                    ProgressBar progressBar = findViewById(R.id.progress_circular);
                     progressBar.setVisibility(View.VISIBLE);
-                    LoginClass.requestLogin(uname, upass, MainActivity.this, progressBar);
+                    LoginClass.requestLogin(uName, uPass, MainActivity.this, progressBar);
 
                 }
             }
@@ -49,12 +50,12 @@ public class MainActivity extends BaseContext {
         password = findViewById(R.id.et_password);
     }
 
-    private boolean checkNotEmpty(String uname, String upass) {
-        if (uname.isEmpty() || upass.isEmpty()) {
+    private boolean checkNotEmpty(String uName, String uPass) {
+        if (uName.isEmpty() || uPass.isEmpty()) {
             login.setEnabled(false);
-            if (uname.isEmpty())
+            if (uName.isEmpty())
                 username.setError("نام کاربری خود را وارد کنید");
-            if (upass.isEmpty())
+            if (uPass.isEmpty())
                 password.setError(" رمز عبور خود را وارد کنید");
             return false;
         } else {

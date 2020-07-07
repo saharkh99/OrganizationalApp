@@ -30,6 +30,7 @@ public class HomeFragment extends Fragment {
     FragmentActivity fragmentActivity;
     MaterialButton news, service;
     static TextView welcome;
+
     public static HomeFragment newInstance() {
         HomeFragment fragment = new HomeFragment();
         return fragment;
@@ -46,24 +47,22 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.activity_home, container, false);
-        //Navigation.homeFlag=true;
         BaseActivity.navigation.setSelectedItemId(R.id.home_part);
 
         findView();
         welcome.setText(User.getName() + "   عزیز" + "\n" + "به برنامه جامع خوش آمدید");
+
+        //changing the color of items in navigation
         news.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 BaseActivity.navigation.setSelectedItemId(R.id.news_part);
-               // nv.changingNewsFragment(fragmentActivity);
-
             }
         });
         service.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 BaseActivity.navigation.setSelectedItemId(R.id.service_part);
-             //   nv.changingServiceFragment(fragmentActivity);
             }
         });
 
@@ -74,7 +73,7 @@ public class HomeFragment extends Fragment {
         news = view.findViewById(R.id.news_btn);
         service = view.findViewById(R.id.service_btn);
         welcome = view.findViewById(R.id.welcome);
-     }
+    }
 
     @Override
     public void onPause() {

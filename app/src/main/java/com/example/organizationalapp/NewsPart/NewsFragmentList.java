@@ -49,15 +49,16 @@ public class NewsFragmentList extends Fragment {
     RecyclerView recyclerView;
     NewsAdapter newsAdapter;
     ProgressBar progressBar;
-    List<News>lists=new ArrayList<>();
-    List<News>nList=new ArrayList<>();
+    List<News> lists = new ArrayList<>();
+    List<News> nList = new ArrayList<>();
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.news_part_layout, container, false);
-        progressBar=view.findViewById(R.id.progress_circular);
+        progressBar = view.findViewById(R.id.progress_circular);
         recyclerView = view.findViewById(R.id.recycle);
-        Log.d("lists",  lists.size()+" ");
+        Log.d("lists", lists.size() + " ");
         new processInBackgRound().execute();
         return view;
     }
@@ -69,15 +70,17 @@ public class NewsFragmentList extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-    public  InputStream getInputStream(URL url){
+
+    public InputStream getInputStream(URL url) {
         try {
-            return  url.openConnection().getInputStream();
+            return url.openConnection().getInputStream();
         } catch (IOException e) {
             e.printStackTrace();
             return null;
         }
     }
-    public  class processInBackgRound extends AsyncTask<Integer,Void,List<News>>{
+
+    public class processInBackgRound extends AsyncTask<Integer, Void, List<News>> {
         @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
         @Override
         protected void onPreExecute() {
@@ -89,39 +92,34 @@ public class NewsFragmentList extends Fragment {
         @Override
         protected List<News> doInBackground(Integer... integers) {
             try {
-                int i=0;
-                URL url=new URL("https://www.msc.ir/?part=newsadvance&inc=newsadvance&feed=true&feedtype=rss");
-                XmlPullParserFactory factory=XmlPullParserFactory.newInstance();
+                int i = 0;
+                URL url = new URL("https://www.msc.ir/?part=newsadvance&inc=newsadvance&feed=true&feedtype=rss");
+                XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
                 factory.setNamespaceAware(false);
-                XmlPullParser xmlPullParser=factory.newPullParser();
-                xmlPullParser.setInput(getInputStream(url),"UTF_8");
-                boolean insideItem=false;
-                String title="",desc="",date;
-                int eventType=xmlPullParser.getEventType();
-                while(eventType!=XmlPullParser.END_DOCUMENT){
-                    News news=null;
-                    if(eventType==XmlPullParser.START_TAG){
-                     //   news=
-
-                        if(xmlPullParser.getName().equalsIgnoreCase("item")){
-                            insideItem=true;
-                        }
-                        else if(xmlPullParser.getName().equalsIgnoreCase("title")){
-                            if(insideItem){
-                              title=  xmlPullParser.nextText();
+                XmlPullParser xmlPullParser = factory.newPullParser();
+                xmlPullParser.setInput(getInputStream(url), "UTF_8");
+                boolean insideItem = false;
+                String title = "", desc = "", date;
+                int eventType = xmlPullParser.getEventType();
+                while (eventType != XmlPullParser.END_DOCUMENT) {
+                    News news = null;
+                    if (eventType == XmlPullParser.START_TAG) {
+                        if (xmlPullParser.getName().equalsIgnoreCase("item")) {
+                            insideItem = true;
+                        } else if (xmlPullParser.getName().equalsIgnoreCase("title")) {
+                            if (insideItem) {
+                                title = xmlPullParser.nextText();
                             }
-                        }
-                        else if(xmlPullParser.getName().equalsIgnoreCase("description")){
-                            if(insideItem){
-                             desc=xmlPullParser.nextText();
+                        } else if (xmlPullParser.getName().equalsIgnoreCase("description")) {
+                            if (insideItem) {
+                                desc = xmlPullParser.nextText();
                             }
                         }
 
 
-                    }
-                    else  if (eventType==XmlPullParser.END_TAG && xmlPullParser.getName().equalsIgnoreCase("item")){
-                        insideItem=false;
-                        news=new News();
+                    } else if (eventType == XmlPullParser.END_TAG && xmlPullParser.getName().equalsIgnoreCase("item")) {
+                        insideItem = false;
+                        news = new News();
                         news.setTag("خبر");
                         news.setImg(R.drawable.scrum);
                         news.setTitle(title);
@@ -131,7 +129,7 @@ public class NewsFragmentList extends Fragment {
                         news.setIdNews(i);
                         i++;
                     }
-                    eventType=xmlPullParser.next();
+                    eventType = xmlPullParser.next();
 
                 }
             } catch (MalformedURLException | XmlPullParserException e) {
@@ -139,9 +137,8 @@ public class NewsFragmentList extends Fragment {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            lists=nList;
-            Log.d("lista", lists.size()+"");
-            Log.d("lista", nList.size()+"");
+            lists = nList;
+            Log.d("lista", nList.size() + "");
             return nList;
         }
 
@@ -149,24 +146,23 @@ public class NewsFragmentList extends Fragment {
         protected void onPostExecute(List<News> s) {
             super.onPostExecute(s);
             progressBar.setVisibility(View.INVISIBLE);
-            //progressDialog.dismiss();
-            lists=s;
-            Log.d("onpost", lists.size()+"");
-            newsAdapter = new NewsAdapter(getActivity(),lists);
-            Log.d("list",  lists.size()+" ");
+            lists = s;
+            Log.d("onpost", lists.size() + "");
+            newsAdapter = new NewsAdapter(getActivity(), lists);
+            Log.d("list", lists.size() + " ");
             recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false));
             recyclerView.setAdapter(newsAdapter);
             newsAdapter.setOnItemClickListener(new NewsAdapter.onItemClickListener() {
                 @Override
-                public void onItemClick(int postion) {
+                public void onItemClick(int position) {
                     List<News> list = new ArrayList<>();
                     list = lists;
                     Intent intent = new Intent(getActivity(), NewsActivity.class);
-                    intent.putExtra("title", list.get(postion).getTitle());
-                    intent.putExtra("date", list.get(postion).getDate());
-                    intent.putExtra("des", list.get(postion).getDescription());
-                    intent.putExtra("tag", list.get(postion).getTag());
-                    intent.putExtra("img", list.get(postion).getImg());
+                    intent.putExtra("title", list.get(position).getTitle());
+                    intent.putExtra("date", list.get(position).getDate());
+                    intent.putExtra("des", list.get(position).getDescription());
+                    intent.putExtra("tag", list.get(position).getTag());
+                    intent.putExtra("img", list.get(position).getImg());
                     startActivity(intent);
 
                 }

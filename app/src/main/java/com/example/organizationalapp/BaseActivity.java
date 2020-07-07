@@ -24,7 +24,6 @@ public class BaseActivity extends AppCompatActivity {
     NavigationView navigationView;
     DrawerLayout mDrawerLayout;
     Navigation nv;
-    Fragment fragment = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +37,7 @@ public class BaseActivity extends AppCompatActivity {
         nv.setNavigation(navigationView, fragmentManager, mDrawerLayout);
         nv.setButtomNavigation(navigation, fragmentManager);
 
+        //move from newsActivity to fragments
         if (NewsActivity.code == 5 || NewsActivity.code == 4)
             this.navigation.setSelectedItemId(R.id.home_part);
         if (NewsActivity.code == 3)
@@ -57,8 +57,7 @@ public class BaseActivity extends AppCompatActivity {
         } else {
             if (NewsActivity.code == 2) {
                 transactionFromLeft(transaction);
-                //////////////////////////////////////////////////////////
-                transaction.replace(R.id.drawer, NewsFragment.newInstance());
+                transaction.add(R.id.fragment_container, NewsFragment.newInstance());
                 Navigation.setNavigationItemSelect(false, false, true);
 
             }
@@ -74,12 +73,8 @@ public class BaseActivity extends AppCompatActivity {
                 transaction.add(R.id.fragment_container, HomeFragment.newInstance());
                 Navigation.setNavigationItemSelect(true, false, false);
             }
-
             transaction.commit();
-
         }
-
-
     }
 
     public void findView() {
@@ -99,7 +94,6 @@ public class BaseActivity extends AppCompatActivity {
         Toolbar toolbars = findViewById(R.id.toolbar);
         DrawerLayout drawerLayout = findViewById(R.id.drawer);
         setSupportActionBar(toolbars);
-
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

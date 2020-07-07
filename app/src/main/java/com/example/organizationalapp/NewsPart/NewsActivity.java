@@ -14,6 +14,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -122,10 +123,10 @@ public class NewsActivity extends BaseContext {
                 overridePendingTransition(R.animator.enter_from_right, R.animator.exit_to_left);
                 switch (item.getItemId()) {
                     case R.id.news_part:
-                        if (!Navigation.newsClicked) {
+                        //   if (!Navigation.newsClicked) {
                             item.setChecked(true);
                             code = 2;
-                        }
+                        //    }
                         break;
                     case R.id.service_part:
                         if (!Navigation.serviceClicked) {
@@ -166,6 +167,7 @@ public class NewsActivity extends BaseContext {
                     case R.id.news_part:
                         if (!Navigation.newsClicked) {
                             item.setChecked(true);
+                            Log.d("true", "true");
                             code = 2;
                         }
                         break;
@@ -176,7 +178,6 @@ public class NewsActivity extends BaseContext {
                         }
                         break;
                     case R.id.home_part:
-                        item.setTitle("");
                         if (!Navigation.homeClicked) {
                             item.setChecked(true);
                             code = 4;

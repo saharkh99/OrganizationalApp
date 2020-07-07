@@ -12,7 +12,7 @@ import android.os.Handler;
 import com.example.organizationalapp.ForntPart.BaseContext;
 
 public class Preview extends BaseContext {
-
+    //setting  3 sec for splash
     @RequiresApi(api = Build.VERSION_CODES.P)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

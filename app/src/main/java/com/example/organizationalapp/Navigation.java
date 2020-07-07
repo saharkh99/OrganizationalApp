@@ -19,19 +19,21 @@ import com.google.android.material.navigation.NavigationView;
 
 public class Navigation {
     public static boolean homeClicked, serviceClicked, newsClicked = false;
-    public void setButtomNavigation(BottomNavigationView navigation,final FragmentManager fragmentManager) {
+
+    //setting a bottom navigation for fragments
+    public void setButtomNavigation(BottomNavigationView navigation, final FragmentManager fragmentManager) {
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.news_part:
-                       changingNewsFragment(fragmentManager);
-                       item.setChecked(true);
+                        changingNewsFragment(fragmentManager);
+                        item.setChecked(true);
 
                         break;
                     case R.id.service_part:
-                        changingServiceFragment( fragmentManager);
+                        changingServiceFragment(fragmentManager);
                         item.setChecked(true);
                         break;
                     case R.id.home_part:
@@ -45,14 +47,16 @@ public class Navigation {
             }
         });
     }
-    public void setNavigation(NavigationView navigationView,FragmentManager fragmentManager,DrawerLayout drawerLayout) {
+
+    // setting navigation for toolbar in fragments
+    public void setNavigation(NavigationView navigationView, FragmentManager fragmentManager, DrawerLayout drawerLayout) {
         View v = navigationView.getHeaderView(0);
         TextView name = v.findViewById(R.id.name);
         TextView intro = v.findViewById(R.id.intro);
-        TextView role=v.findViewById(R.id.role);
-        String namestr = User.getName().trim();
-        String s = String.valueOf(namestr.charAt(0));
-        name.setText(namestr);
+        TextView role = v.findViewById(R.id.role);
+        String nameStr = User.getName().trim();
+        String s = String.valueOf(nameStr.charAt(0));
+        name.setText(nameStr);
         intro.setText(s);
         role.setText(User.getRole());
 
@@ -80,13 +84,15 @@ public class Navigation {
             }
         });
     }
+
+    // move between fragments
     public void changingNewsFragment(FragmentManager fragmentManager) {
-        if(!Navigation.newsClicked) {
+        if (!Navigation.newsClicked) {
             FragmentTransaction transaction = fragmentManager.beginTransaction();
             transaction.setCustomAnimations(R.animator.enter_from_left, R.animator.exit_to_right, R.animator.enter_from_right, R.animator.exit_to_left);
             transaction.replace(R.id.fragment_container, NewsFragment.newInstance());
             transaction.commit();
-           setNavigationItemSelect(false, false, true);
+            setNavigationItemSelect(false, false, true);
         }
     }
 
@@ -94,7 +100,7 @@ public class Navigation {
     public void changingServiceFragment(FragmentManager fragmentManager) {
 
 
-        if(!Navigation.serviceClicked) {
+        if (!Navigation.serviceClicked) {
             FragmentTransaction transaction1 = fragmentManager.beginTransaction();
             transaction1.setCustomAnimations(R.animator.enter_from_right, R.animator.exit_to_left, R.animator.enter_from_left, R.animator.exit_to_right);
             transaction1.replace(R.id.fragment_container, ServiceFragment.newInstance());
@@ -105,7 +111,7 @@ public class Navigation {
 
     public void changingHomeFragment(FragmentManager fragmentManager) {
 
-        if(!Navigation.homeClicked) {
+        if (!Navigation.homeClicked) {
             FragmentTransaction transaction2 = fragmentManager.beginTransaction();
             if (Navigation.newsClicked) {
                 transaction2.setCustomAnimations(R.animator.enter_from_right, R.animator.exit_to_left, R.animator.enter_from_left, R.animator.exit_to_right);
@@ -117,10 +123,11 @@ public class Navigation {
             setNavigationItemSelect(true, false, false);
         }
     }
-    public static void setNavigationItemSelect(boolean homeClicked,boolean serviceClicked,boolean newsClicked){
-        Navigation.homeClicked=homeClicked;
-        Navigation.serviceClicked=serviceClicked;
-        Navigation.newsClicked=newsClicked;
+
+    public static void setNavigationItemSelect(boolean homeClicked, boolean serviceClicked, boolean newsClicked) {
+        Navigation.homeClicked = homeClicked;
+        Navigation.serviceClicked = serviceClicked;
+        Navigation.newsClicked = newsClicked;
     }
 
 }

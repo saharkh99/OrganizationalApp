@@ -1,7 +1,7 @@
 package com.example.organizationalapp;
 
 public class User {
-    public static String name;
+    static String name;
     static String role;
 
     public static String getRole() {

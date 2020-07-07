@@ -20,6 +20,5 @@ public class Font extends Application {
                                 .setFontAttrId(R.attr.fontPath)
                                 .build()))
                 .build());
-        //....
     }
 }

@@ -1,13 +1,16 @@
 package com.example.organizationalapp.NewsPart;
+
 import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
+
 import com.duolingo.open.rtlviewpager.RtlViewPager;
 import com.example.organizationalapp.R;
 import com.google.android.material.tabs.TabLayout;
@@ -47,10 +50,7 @@ public class NewsFragment extends Fragment {
 
     private void findView() {
         tabLayout = view.findViewById(R.id.pager_header);
-
-
     }
-
 
 
 }
